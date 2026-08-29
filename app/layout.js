@@ -7,7 +7,7 @@ export const metadata = {
     template: "%s | AIPrintStudio",
   },
   description:
-    "We professionally recreate your AI-generated images into high-resolution, commercial print-ready files. Expert CMYK conversion, vector artwork, and 300+ DPI output. Projects from $5.",
+    "We professionally recreate your AI-generated images into high-resolution, commercial print-ready files. Expert CMYK conversion, vector artwork, and 300+ DPI output.",
   keywords: [
     "AI print-ready artwork",
     "print-ready AI artwork",
@@ -115,11 +115,6 @@ export default function RootLayout({ children }) {
                 { "@type": "Country", name: "United Kingdom" },
                 { "@type": "Country", name: "Australia" },
               ],
-              offers: {
-                "@type": "Offer",
-                price: "5.00",
-                priceCurrency: "USD",
-              },
             }),
           }}
         />

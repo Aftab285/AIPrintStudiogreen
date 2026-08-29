@@ -7,7 +7,7 @@ export default function BeforeAfterShowcase() {
   const [activeTab, setActiveTab] = useState("vector");
 
   const categories = [
-    { id: "vector", label: "Vector & Logo", beforeDesc: "Raw 72 DPI AI render with blurry edges & gibberish text", afterDesc: "100% Vector master (.AI/.EPS/.SVG) with real typography" },
+    { id: "vector", label: "Vector & Logo", beforeDesc: "Raw 72 DPI AI render with blurry edges & gibberish text", afterDesc: "100% Vector master in Adobe Illustrator (.AI/.EPS/.SVG) with clean bezier curves" },
     { id: "apparel", label: "T-Shirt & Apparel", beforeDesc: "Solid square background with heavy white halo fringe", afterDesc: "Clean transparent alpha mask with vibrant dark-shirt underbase" },
     { id: "color", label: "CMYK Color Management", beforeDesc: "Muddy, crushed dark shadows and dull out-of-gamut greens", afterDesc: "Calibrated 300% TAC CMYK with brilliant print vibrancy" },
   ];
@@ -23,7 +23,7 @@ export default function BeforeAfterShowcase() {
             See the Difference of <span className="highlight-text">Manual Pre-Press Reproduction</span>
           </h2>
           <p className="section-subtitle">
-            Compare raw AI outputs directly against our commercial print-ready master recreations.
+            Compare raw AI outputs directly against our commercial print-ready master recreations in Adobe Illustrator.
           </p>
         </div>
 
@@ -77,7 +77,7 @@ export default function BeforeAfterShowcase() {
             <div className="showcase-card__image-wrap">
               <Image
                 src="/hero-after.jpg"
-                alt="After manual recreation: Sharp, commercial print-ready artwork with CMYK color optimization"
+                alt="After manual recreation: Recreated master vector file open in Adobe Illustrator with 100% sharp detail"
                 width={480}
                 height={550}
                 className="showcase-card__img"

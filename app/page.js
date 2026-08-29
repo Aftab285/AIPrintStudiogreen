@@ -69,10 +69,10 @@ export default function Home() {
               },
               {
                 "@type": "Question",
-                name: "How much does it cost and what is the turnaround time?",
+                name: "How do I get a quote and what is the turnaround time?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Projects start from just $5 for basic vectorization and file preparation. Standard turnaround is 12 to 24 hours. Rush delivery (4–6 hours) is available upon request.",
+                  text: "Connect directly on WhatsApp (+92 347 9429415) or submit our Free Quote form. Share your AI artwork and target print dimensions for a free, instant file review and quote. Standard turnaround is 12 to 24 hours.",
                 },
               },
             ],

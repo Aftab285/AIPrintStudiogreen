@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 function IconShieldCheck() {
   return (
@@ -150,7 +151,7 @@ export default function HeroSection() {
                 <WhatsAppIcon />
                 Talk to Me
               </a>
-              <a
+              <Link
                 href="/contact"
                 className="btn btn--outline btn--large"
               >
@@ -158,7 +159,7 @@ export default function HeroSection() {
                 <svg className="btn__icon btn__arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                   <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
                 </svg>
-              </a>
+              </Link>
             </div>
 
             <div className="hero__social-proof">
@@ -212,7 +213,7 @@ export default function HeroSection() {
                 <span className="hero__image-card__label">Print-Ready Artwork</span>
                 <Image
                   src="/hero-after.jpg"
-                  alt="Professionally recreated print-ready artwork"
+                  alt="Professionally recreated vector print-ready artwork in Adobe Illustrator"
                   width={275}
                   height={350}
                   priority

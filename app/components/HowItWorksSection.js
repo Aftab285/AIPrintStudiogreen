@@ -9,8 +9,8 @@ export default function HowItWorksSection() {
     {
       num: "02",
       title: "Free Pre-Press Inspection",
-      desc: "We examine your file's resolution, artifacts, colors, and margins. We provide transparent, upfront pricing starting at just $5 with a guaranteed delivery time.",
-      highlight: "No Obligation Quote",
+      desc: "We examine your file's resolution, artifacts, colors, and margins. We provide transparent advice and a custom quote with a guaranteed delivery time.",
+      highlight: "No Obligation Review",
     },
     {
       num: "03",
@@ -67,7 +67,7 @@ export default function HowItWorksSection() {
           >
             Start Your Project on WhatsApp →
           </a>
-          <span className="how-it-works-cta__sub">Projects starting from only $5 · Fast 12–24h Turnaround</span>
+          <span className="how-it-works-cta__sub">Free Pre-Press File Inspection · Fast 12–24h Turnaround</span>
         </div>
       </div>
     </section>

@@ -8,7 +8,7 @@ import CTABanner from "../components/CTABanner";
 
 export const metadata = {
   title: "How It Works — 4-Step AI Artwork Pre-Press Process | AIPrintStudio",
-  description: "Learn how AIPrintStudio transforms your raw Midjourney, ChatGPT, and Flux images into commercial print-ready files in 4 simple steps. Projects from $5.",
+  description: "Learn how AIPrintStudio transforms your raw Midjourney, ChatGPT, and Flux images into commercial print-ready files in 4 simple steps.",
 };
 
 export default function HowItWorksPage() {

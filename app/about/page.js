@@ -58,7 +58,7 @@ export default function AboutPage() {
                 <ul className="about-guarantees-list">
                   <li><strong>100% Human Quality:</strong> No automated bots or destructive neural filters.</li>
                   <li><strong>Print Shop Ready:</strong> Certified PDF/X-1a, vector .AI, .EPS, and 300+ DPI masters.</li>
-                  <li><strong>Transparent Rates:</strong> Projects starting at only $5 with fast 12–24h turnaround.</li>
+                  <li><strong>Fast Turnaround:</strong> 12–24h standard delivery with rush options.</li>
                   <li><strong>Direct Support:</strong> 1-on-1 WhatsApp consultation with your dedicated designer.</li>
                 </ul>
               </div>

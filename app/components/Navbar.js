@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -28,7 +29,7 @@ export default function Navbar() {
     >
       <div className="container">
         {/* Brand */}
-        <a href="/" className="navbar__brand" aria-label="AIPrintStudio Home">
+        <Link href="/" className="navbar__brand" aria-label="AIPrintStudio Home">
           <Image
             src="/logo.jpg"
             alt="AIPrintStudio Logo"
@@ -43,60 +44,55 @@ export default function Navbar() {
               Your AI Art, Perfect for Print.
             </span>
           </div>
-        </a>
+        </Link>
 
         {/* Desktop Navigation Links */}
         <ul className="navbar__links">
           <li>
-            <a href="/" className="navbar__link active">
+            <Link href="/" className="navbar__link active">
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/services" className="navbar__link navbar__link--has-dropdown">
+            <Link href="/services" className="navbar__link navbar__link--has-dropdown">
               Services
               <svg viewBox="0 0 10 6" fill="none" aria-hidden="true">
                 <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/how-it-works" className="navbar__link">
+            <Link href="/how-it-works" className="navbar__link">
               How It Works
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/pricing" className="navbar__link">
-              Pricing
-            </a>
-          </li>
-          <li>
-            <a href="/portfolio" className="navbar__link">
+            <Link href="/portfolio" className="navbar__link">
               Portfolio
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/blog" className="navbar__link">
+            <Link href="/blog" className="navbar__link">
               Blog
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/about" className="navbar__link">
+            <Link href="/about" className="navbar__link">
               About
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/contact" className="navbar__link">
+            <Link href="/contact" className="navbar__link">
               Contact
-            </a>
+            </Link>
           </li>
         </ul>
 
         {/* Actions */}
         <div className="navbar__actions">
-          <a href="/contact" className="btn btn--outline">
+          <Link href="/contact" className="btn btn--outline">
             Get a Free Quote
-          </a>
+          </Link>
           <a
             href={whatsappUrl}
             className="btn btn--primary"

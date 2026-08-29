@@ -9,7 +9,7 @@ import { servicesData } from "../data/servicesData";
 
 export const metadata = {
   title: "Commercial AI Print Services — Vectorization, CMYK & Pre-Press",
-  description: "Browse all 13 commercial pre-press services for AI-generated images. AI artwork recreation, logo vectorization, t-shirt prep, poster scaling, packaging dielines, and KDP covers. Projects from $5.",
+  description: "Browse all 13 commercial pre-press services for AI-generated images. AI artwork recreation, logo vectorization, t-shirt prep, poster scaling, packaging dielines, and KDP covers.",
 };
 
 export default function ServicesPage() {
@@ -39,7 +39,7 @@ export default function ServicesPage() {
                 <div key={srv.slug} className="service-hub-card">
                   <div className="service-hub-card__top">
                     <span className="service-hub-card__badge">{srv.badge}</span>
-                    <span className="service-hub-card__price">From {srv.startingPrice}</span>
+                    <span className="service-hub-card__price">✓ Press-Ready</span>
                   </div>
                   <h2 className="service-hub-card__title">
                     <Link href={`/services/${srv.slug}`}>{srv.title}</Link>

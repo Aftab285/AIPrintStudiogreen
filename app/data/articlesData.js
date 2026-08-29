@@ -79,7 +79,7 @@ If you attempt to print a 1024px raw AI file as an 18x24 inch poster, the printe
       },
       {
         q: "How does AIPrintStudio help with this process?",
-        a: "We manually recreate and prepare your AI artwork for any commercial printing application starting at just $5. We handle vectorization, CMYK color grading, bleeds, and preflight inspection with 12–24 hour turnaround.",
+        a: "We manually recreate and prepare your AI artwork for any commercial printing application. We handle vectorization, CMYK color grading, bleeds, and preflight inspection with 12–24 hour turnaround.",
       },
     ],
   },

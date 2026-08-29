@@ -65,7 +65,6 @@ export default function ContactPage() {
                 <p><strong>Response Time:</strong> Typically within 15–30 minutes</p>
                 <p><strong>Availability:</strong> 24/7 Global Client Support</p>
                 <p><strong>Supported Regions:</strong> USA, Canada, United Kingdom, Australia, Europe &amp; Worldwide</p>
-                <p><strong>Starting Rate:</strong> $5 per artwork preparation</p>
               </div>
             </div>
           </div>

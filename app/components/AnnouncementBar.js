@@ -13,10 +13,9 @@ export default function AnnouncementBar() {
         <div className="announcement-bar__right">
           <span>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <line x1="12" y1="1" x2="12" y2="23" />
-              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
             </svg>
-            Projects start from <strong>$5</strong>
+            <strong>Free Consultation &amp; Quotes</strong>
           </span>
           <span className="announcement-bar__divider" aria-hidden="true" />
           <span>

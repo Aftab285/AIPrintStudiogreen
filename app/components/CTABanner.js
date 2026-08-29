@@ -17,7 +17,7 @@ export default function CTABanner() {
               Turn Your AI Artwork into Commercial Print-Ready Files Today
             </h2>
             <p className="cta-banner__desc">
-              Connect directly on WhatsApp or submit a quote request. Projects start at just $5 with 12–24h turnaround and a 100% print acceptance guarantee.
+              Connect directly on WhatsApp or submit a quote request. Fast 12–24h turnaround and a 100% commercial print acceptance guarantee.
             </p>
 
             <div className="cta-banner__actions">

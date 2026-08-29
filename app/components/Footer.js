@@ -2,12 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { servicesData } from "../data/servicesData";
 import { toolsData } from "../data/toolsData";
-import { articlesData } from "../data/articlesData";
 
 export default function Footer() {
   const servicesList = Object.values(servicesData);
   const toolsList = Object.values(toolsData);
-  const articlesList = Object.values(articlesData);
 
   return (
     <footer className="site-footer" role="contentinfo">
@@ -96,7 +94,6 @@ export default function Footer() {
             <h4 className="footer-title">Company</h4>
             <ul className="footer-links">
               <li><Link href="/how-it-works" className="footer-link">How It Works</Link></li>
-              <li><Link href="/pricing" className="footer-link">Pricing &amp; Rates</Link></li>
               <li><Link href="/portfolio" className="footer-link">Portfolio &amp; Samples</Link></li>
               <li><Link href="/about" className="footer-link">About AIPrintStudio</Link></li>
               <li><Link href="/contact" className="footer-link">Contact &amp; Free Quote</Link></li>
@@ -115,7 +112,7 @@ export default function Footer() {
             <span>✓ 300+ DPI Certified</span>
             <span>✓ CMYK Color Calibrated</span>
             <span>✓ Infinite Scalable Vector</span>
-            <span>✓ Projects from $5</span>
+            <span>✓ 100% Print Shop Guarantee</span>
           </div>
         </div>
       </div>

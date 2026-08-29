@@ -43,7 +43,7 @@ export default async function ServiceDetailPage({ params }) {
   const whatsappUrl =
     "https://wa.me/923479429415?text=" +
     encodeURIComponent(
-      `Hello! I need ${service.title} for my AI artwork. Can we discuss pricing and specs?`
+      `Hello! I need ${service.title} for my AI artwork. Can we discuss specs and a custom quote?`
     );
 
   return (
@@ -68,7 +68,7 @@ export default async function ServiceDetailPage({ params }) {
                 <p className="subpage-hero__subtitle">{service.heroSubheading}</p>
                 
                 <div className="service-detail-meta-pills">
-                  <span className="meta-pill">Projects from <strong>{service.startingPrice}</strong></span>
+                  <span className="meta-pill">✓ <strong>100% Commercial Ready</strong></span>
                   <span className="meta-pill">⚡ Turnaround: <strong>{service.turnaround}</strong></span>
                   <span className="meta-pill">✓ 100% Human Craftsmanship</span>
                 </div>
@@ -228,7 +228,7 @@ export default async function ServiceDetailPage({ params }) {
       <Footer />
       <WhatsAppFloat />
 
-      {/* Structured Data: Service & FAQ Schema */}
+      {/* Structured Data: Service Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -241,11 +241,6 @@ export default async function ServiceDetailPage({ params }) {
               "@type": "Organization",
               name: "AIPrintStudio",
               url: "https://aiprintstudio.com",
-            },
-            offers: {
-              "@type": "Offer",
-              price: service.startingPrice.replace("$", ""),
-              priceCurrency: "USD",
             },
           }),
         }}

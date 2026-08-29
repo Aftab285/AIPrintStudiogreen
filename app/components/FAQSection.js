@@ -19,8 +19,8 @@ export default function FAQSection() {
       a: "You receive a complete commercial print master package including: Adobe Illustrator (.AI), Scalable Vector (.SVG), Vector EPS, Press-Ready PDF (PDF/X-1a with bleeds & crop marks), High-Res 300+ DPI Transparent PNG, and CMYK uncompressed TIFF.",
     },
     {
-      q: "How much does it cost and what is the turnaround time?",
-      a: "Projects start from just $5 for basic vectorization and file preparation. Standard turnaround is 12 to 24 hours. Rush delivery (4–6 hours) is available upon request for urgent deadlines.",
+      q: "How do I get a quote and what is the turnaround time?",
+      a: "Connect directly on WhatsApp (+92 347 9429415) or submit our Free Quote form. Share your AI artwork and target print dimensions for a free, instant file review and quote. Standard turnaround is 12 to 24 hours.",
     },
     {
       q: "Which print-on-demand (POD) platforms do your files work with?",

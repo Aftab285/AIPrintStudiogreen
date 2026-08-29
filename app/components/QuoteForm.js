@@ -36,7 +36,7 @@ export default function QuoteForm({ defaultService = "AI Artwork Recreation" }) 
       <div className="quote-form-card__header">
         <h3 className="quote-form-card__title">Get a Free Pre-Press Quote</h3>
         <p className="quote-form-card__subtitle">
-          Projects start at $5. Get instant expert inspection and a personalized quote within 15 minutes.
+          Get expert file inspection and a personalized quote within 15 minutes.
         </p>
       </div>
 

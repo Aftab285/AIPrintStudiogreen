@@ -135,7 +135,7 @@ export default function ServicesOverview() {
               <p className="service-card__desc">{srv.summary}</p>
               
               <div className="service-card__meta">
-                <span className="service-card__price">From <strong>{srv.startingPrice}</strong></span>
+                <span className="service-card__price">✓ <strong>100% Commercial Ready</strong></span>
                 <span className="service-card__turnaround">⚡ {srv.turnaround}</span>
               </div>
 

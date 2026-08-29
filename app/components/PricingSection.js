@@ -1,11 +1,10 @@
 export default function PricingSection() {
   const tiers = [
     {
-      name: "Starter Vector / Prep",
-      price: "$5",
-      period: "per artwork",
+      name: "Vector & Basic Prep",
+      badge: "Fast Turnaround",
       popular: false,
-      desc: "Ideal for simple AI logos, flat stickers, basic icons, and direct CMYK file inspection.",
+      desc: "For AI logos, flat stickers, basic icons, and direct CMYK file inspection.",
       features: [
         "100% Manual Vector Redraw (.SVG, .AI, .EPS)",
         "300+ DPI High-Resolution Master File",
@@ -14,17 +13,16 @@ export default function PricingSection() {
         "12–24 Hour Turnaround",
         "Commercial Use License Included",
       ],
-      cta: "Talk on WhatsApp",
-      ctaHref: "https://wa.me/923479429415?text=" + encodeURIComponent("Hello! I need Starter AI print preparation ($5). Can we discuss?"),
+      cta: "Request Free Quote on WhatsApp",
+      ctaHref: "https://wa.me/923479429415?text=" + encodeURIComponent("Hello! I need Vector & Basic Prep for my AI artwork. Can we discuss?"),
     },
     {
       name: "Commercial Print Master",
-      price: "$10",
-      period: "per artwork",
+      badge: "Most Popular",
       popular: true,
-      desc: "Our most popular package for t-shirts, posters, complex illustrations, and multi-color vector artwork.",
+      desc: "Our most requested service for t-shirts, posters, complex illustrations, and multi-color vector artwork.",
       features: [
-        "Everything in Starter, plus:",
+        "Everything in Basic Prep, plus:",
         "Complex Multi-Layer Vectorization",
         "Real Typography Replacement & Kerning",
         "Custom Bleeds & Crop Marks (0.125”)",
@@ -32,17 +30,16 @@ export default function PricingSection() {
         "Sticker Die-Cut Contour Cut Paths",
         "100% Guaranteed Commercial Press Acceptance",
       ],
-      cta: "Get Started Now",
-      ctaHref: "https://wa.me/923479429415?text=" + encodeURIComponent("Hello! I need the Commercial Print Master package ($10). Can we discuss my project?"),
+      cta: "Get Started on WhatsApp",
+      ctaHref: "https://wa.me/923479429415?text=" + encodeURIComponent("Hello! I need the Commercial Print Master package. Can we discuss my project?"),
     },
     {
       name: "Packaging & Large Format",
-      price: "$15+",
-      period: "custom scope",
+      badge: "Enterprise & Factory",
       popular: false,
       desc: "For commercial packaging dielines, wraparound book covers, trade show backdrops, and product labels.",
       features: [
-        "Everything in Commercial, plus:",
+        "Everything in Commercial Master, plus:",
         "Full Dieline Mapping & Folding Alignment",
         "Spot UV, Gold Foil & Emboss Mask Layers",
         "KDP / IngramSpark Exact Spine Calculation",
@@ -50,34 +47,30 @@ export default function PricingSection() {
         "Rush Delivery Option (4–6 Hours)",
         "Direct Print Shop Technical Support",
       ],
-      cta: "Request Free Quote",
+      cta: "Discuss Custom Scope",
       ctaHref: "/contact",
     },
   ];
 
   return (
-    <section className="pricing-section" id="pricing" aria-labelledby="pricing-heading">
+    <section className="pricing-section" id="packages" aria-labelledby="packages-heading">
       <div className="container">
         <div className="section-header text-center">
-          <span className="section-badge">Transparent Value</span>
-          <h2 className="section-title" id="pricing-heading">
-            Simple, Transparent Pricing <span className="highlight-text">Starting from $5</span>
+          <span className="section-badge">Tailored Pre-Press Solutions</span>
+          <h2 className="section-title" id="packages-heading">
+            Custom Packages for <span className="highlight-text">Every Print Scope</span>
           </h2>
           <p className="section-subtitle">
-            No subscriptions or hidden fees. Pay only for the artwork you need prepared, backed by our 100% print shop acceptance guarantee.
+            Every AI artwork is unique. We provide upfront, transparent custom quotes based on your exact file requirements, backed by our 100% print shop acceptance guarantee.
           </p>
         </div>
 
         <div className="pricing-grid">
           {tiers.map((tier, idx) => (
             <div key={idx} className={`pricing-card ${tier.popular ? "pricing-card--popular" : ""}`}>
-              {tier.popular && <span className="pricing-card__badge">Most Popular</span>}
+              <span className="pricing-card__badge">{tier.badge}</span>
               <div className="pricing-card__header">
                 <h3 className="pricing-card__name">{tier.name}</h3>
-                <div className="pricing-card__price-wrap">
-                  <span className="pricing-card__price">{tier.price}</span>
-                  <span className="pricing-card__period">{tier.period}</span>
-                </div>
                 <p className="pricing-card__desc">{tier.desc}</p>
               </div>
 

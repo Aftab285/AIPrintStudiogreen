@@ -134,7 +134,7 @@ export default async function ArticleDetailPage({ params }) {
               <div className="sidebar-cta-box">
                 <h3>Need Print-Ready AI Files?</h3>
                 <p>
-                  Skip the headache of blurry prints and color shifts. We recreate AI files manually from $5 with guaranteed printer approval.
+                  Skip the headache of blurry prints and color shifts. We recreate AI files manually with guaranteed printer approval.
                 </p>
                 <a
                   href={whatsappUrl}
