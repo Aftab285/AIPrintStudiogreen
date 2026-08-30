@@ -44,8 +44,8 @@ const articlesList = Object.values(articlesData);
             <p class="blog-card__summary">{art.summary}</p>
             <div class="blog-card__footer">
               <span class="blog-card__date">{art.publishDate}</span>
-              <a href={`/blog/${art.slug}`} class="blog-card__link">
-                Read Guide →
+              <a href={`/blog/${art.slug}`} class="blog-card__link" aria-label={`Read complete in-depth guide on ${art.title}`}>
+                Read Article →
               </a>
             </div>
           </article>

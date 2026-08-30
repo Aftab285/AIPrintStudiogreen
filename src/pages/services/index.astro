@@ -55,8 +55,8 @@ const servicesList = Object.values(servicesData);
 
               <div class="service-hub-card__footer">
                 <span class="service-hub-card__turnaround">⚡ {srv.turnaround}</span>
-                <a href={`/services/${srv.slug}`} class="btn btn--outline btn--sm">
-                  View Service Specs →
+                <a href={`/services/${srv.slug}`} class="btn btn--outline btn--sm" aria-label={`Explore full commercial specifications for ${srv.shortTitle}`}>
+                  Explore {srv.shortTitle} Specs →
                 </a>
               </div>
             </div>

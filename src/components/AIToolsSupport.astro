@@ -29,8 +29,8 @@ const extraTools = ["Claude", "Gemini", "Leonardo AI", "Recraft", "DeepSeek", "K
             <span class="tool-card__spec">Native: {tool.nativeRes}</span>
             <span class="tool-card__spec text-success">Target: {tool.targetRes}</span>
           </div>
-          <a href={`/guides/${tool.slug}`} class="tool-card__link">
-            Read Printing Guide →
+          <a href={`/guides/${tool.slug}`} class="tool-card__link" aria-label={`Read complete commercial printing guide for ${tool.name} artwork`}>
+            Read {tool.name} Printing Guide →
           </a>
         </div>
       ))}

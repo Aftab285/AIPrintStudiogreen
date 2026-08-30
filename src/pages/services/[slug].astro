@@ -74,10 +74,11 @@ const serviceSchema = {
                 class="btn btn--primary btn--large"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`Chat directly on WhatsApp about ${service.shortTitle}`}
               >
                 Talk to Me on WhatsApp →
               </a>
-              <a href="#quote" class="btn btn--outline btn--large">
+              <a href="#quote" class="btn btn--outline btn--large" aria-label={`Request a free quote for ${service.shortTitle}`}>
                 Get a Free Quote
               </a>
             </div>

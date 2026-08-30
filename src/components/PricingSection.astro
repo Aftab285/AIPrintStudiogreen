@@ -47,7 +47,7 @@ const tiers = [
       "Rush Delivery Option (4–6 Hours)",
       "Direct Print Shop Technical Support",
     ],
-    cta: "Discuss Custom Scope",
+    cta: "Discuss Custom Scope with Our Team",
     ctaHref: "/contact",
   },
 ];
@@ -91,6 +91,7 @@ const tiers = [
               class={`btn ${tier.popular ? "btn--primary" : "btn--outline"} btn--full`}
               target={tier.ctaHref.startsWith("http") ? "_blank" : undefined}
               rel={tier.ctaHref.startsWith("http") ? "noopener noreferrer" : undefined}
+              aria-label={`${tier.cta} for ${tier.name}`}
             >
               {tier.cta}
             </a>

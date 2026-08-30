@@ -39,8 +39,8 @@ const servicesList = Object.values(servicesData);
           </div>
 
           <div class="service-card__footer">
-            <a href={`/services/${srv.slug}`} class="service-card__link">
-              View Service Specs →
+            <a href={`/services/${srv.slug}`} class="service-card__link" aria-label={`Explore full technical specifications for ${srv.shortTitle}`}>
+              Explore {srv.shortTitle} Specifications →
             </a>
           </div>
         </div>
