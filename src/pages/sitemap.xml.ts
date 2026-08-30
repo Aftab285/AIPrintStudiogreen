@@ -5,38 +5,37 @@ import { articlesData } from "../data/articlesData.js";
 
 const siteUrl = "https://aiprintstudio.com";
 
-export const GET: APIRoute = async () => {
-  const currentDate = new Date().toISOString().split("T")[0];
+// Meaningful last-modification dates per page group
+const LAUNCH_DATE = "2026-07-01";      // site launch
+const SERVICES_DATE = "2026-08-01";   // last service content update
+const BLOG_DATE = "2026-08-15";       // last blog update
+const GUIDE_DATE = "2026-08-10";      // last guide update
 
+export const GET: APIRoute = async () => {
   const staticPages = [
-    { url: `${siteUrl}/`, changefreq: "daily", priority: "1.0" },
-    { url: `${siteUrl}/services/`, changefreq: "weekly", priority: "0.9" },
-    { url: `${siteUrl}/how-it-works/`, changefreq: "monthly", priority: "0.8" },
-    { url: `${siteUrl}/portfolio/`, changefreq: "weekly", priority: "0.8" },
-    { url: `${siteUrl}/guides/`, changefreq: "weekly", priority: "0.8" },
-    { url: `${siteUrl}/blog/`, changefreq: "weekly", priority: "0.8" },
-    { url: `${siteUrl}/about/`, changefreq: "monthly", priority: "0.7" },
-    { url: `${siteUrl}/contact/`, changefreq: "monthly", priority: "0.8" },
-    { url: `${siteUrl}/privacy-policy/`, changefreq: "monthly", priority: "0.3" },
-    { url: `${siteUrl}/terms/`, changefreq: "monthly", priority: "0.3" },
+    { url: `${siteUrl}/`,                 lastmod: LAUNCH_DATE },
+    { url: `${siteUrl}/services/`,        lastmod: SERVICES_DATE },
+    { url: `${siteUrl}/how-it-works/`,    lastmod: LAUNCH_DATE },
+    { url: `${siteUrl}/portfolio/`,       lastmod: SERVICES_DATE },
+    { url: `${siteUrl}/guides/`,          lastmod: GUIDE_DATE },
+    { url: `${siteUrl}/blog/`,            lastmod: BLOG_DATE },
+    { url: `${siteUrl}/about/`,           lastmod: LAUNCH_DATE },
+    { url: `${siteUrl}/contact/`,         lastmod: LAUNCH_DATE },
   ];
 
   const servicePages = Object.keys(servicesData).map((slug) => ({
     url: `${siteUrl}/services/${slug}/`,
-    changefreq: "weekly",
-    priority: "0.85",
+    lastmod: SERVICES_DATE,
   }));
 
   const guidePages = Object.keys(toolsData).map((slug) => ({
     url: `${siteUrl}/guides/${slug}/`,
-    changefreq: "weekly",
-    priority: "0.8",
+    lastmod: GUIDE_DATE,
   }));
 
   const blogPages = Object.keys(articlesData).map((slug) => ({
     url: `${siteUrl}/blog/${slug}/`,
-    changefreq: "monthly",
-    priority: "0.75",
+    lastmod: BLOG_DATE,
   }));
 
   const allPages = [...staticPages, ...servicePages, ...guidePages, ...blogPages];
@@ -47,9 +46,7 @@ ${allPages
   .map(
     (page) => `  <url>
     <loc>${page.url}</loc>
-    <lastmod>${currentDate}</lastmod>
-    <changefreq>${page.changefreq}</changefreq>
-    <priority>${page.priority}</priority>
+    <lastmod>${page.lastmod}</lastmod>
   </url>`
   )
   .join("\n")}
