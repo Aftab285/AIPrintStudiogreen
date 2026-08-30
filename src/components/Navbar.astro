@@ -16,14 +16,18 @@ const whatsappUrl =
   <div class="container">
     {/* Brand */}
     <a href="/" class="navbar__brand" aria-label="AIPrintStudio Home">
-      <img
-        src="/logo.jpg"
-        alt="AIPrintStudio Logo"
-        width="40"
-        height="40"
-        class="navbar__logo"
-        loading="eager"
-      />
+      <picture>
+        <source srcset="/logo.webp" type="image/webp" />
+        <img
+          src="/logo.jpg"
+          alt="AIPrintStudio Logo"
+          width="40"
+          height="40"
+          class="navbar__logo"
+          loading="eager"
+          decoding="async"
+        />
+      </picture>
       <div class="navbar__brand-text">
         <span class="navbar__brand-name">AIPrintStudio</span>
         <span class="navbar__brand-tagline">

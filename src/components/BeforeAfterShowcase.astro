@@ -39,14 +39,18 @@ const categories = [
       <div class="showcase-card showcase-card--before">
         <div class="showcase-card__tag showcase-card__tag--before">Raw AI Output (72 DPI)</div>
         <div class="showcase-card__image-wrap">
-          <img
-            src="/hero-before.jpg"
-            alt="Before manual recreation: AI-generated artwork showing subtle artifacts and pixelation"
-            width="480"
-            height="550"
-            class="showcase-card__img"
-            loading="lazy"
-          />
+          <picture>
+            <source srcset="/hero-before.webp" type="image/webp" />
+            <img
+              src="/hero-before.jpg"
+              alt="Before manual recreation: AI-generated artwork showing subtle artifacts and pixelation"
+              width="480"
+              height="550"
+              class="showcase-card__img"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
         </div>
         <div class="showcase-card__desc">
           <span class="showcase-card__status text-danger">✕ Common AI Flaws:</span>
@@ -67,14 +71,18 @@ const categories = [
       <div class="showcase-card showcase-card--after">
         <div class="showcase-card__tag showcase-card__tag--after">Press-Ready Master (300+ DPI / Vector)</div>
         <div class="showcase-card__image-wrap">
-          <img
-            src="/hero-after.jpg"
-            alt="After manual recreation: Recreated master vector file open in Adobe Illustrator with 100% sharp detail"
-            width="480"
-            height="550"
-            class="showcase-card__img"
-            loading="lazy"
-          />
+          <picture>
+            <source srcset="/hero-after.webp" type="image/webp" />
+            <img
+              src="/hero-after.jpg"
+              alt="After manual recreation: Recreated master vector file open in Adobe Illustrator with 100% sharp detail"
+              width="480"
+              height="550"
+              class="showcase-card__img"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
         </div>
         <div class="showcase-card__desc">
           <span class="showcase-card__status text-success">✓ AIPrintStudio Standard:</span>

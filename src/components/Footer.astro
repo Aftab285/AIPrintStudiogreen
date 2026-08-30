@@ -13,14 +13,18 @@ const currentYear = new Date().getFullYear();
       {/* Brand Info */}
       <div class="footer-col footer-col--brand">
         <a href="/" class="footer-brand">
-          <img
-            src="/logo.jpg"
-            alt="AIPrintStudio Logo"
-            width="36"
-            height="36"
-            class="footer-logo"
-            loading="lazy"
-          />
+          <picture>
+            <source srcset="/logo.webp" type="image/webp" />
+            <img
+              src="/logo.jpg"
+              alt="AIPrintStudio Logo"
+              width="36"
+              height="36"
+              class="footer-logo"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
           <span class="footer-brand-name">AIPrintStudio</span>
         </a>
         <p class="footer-tagline">

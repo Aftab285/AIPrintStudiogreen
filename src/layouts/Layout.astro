@@ -28,7 +28,7 @@ const fullOgImageUrl = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogIma
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/jpeg" href="/logo.jpg" />
+    <link rel="icon" type="image/webp" href="/logo.webp" />
     <meta name="generator" content={Astro.generator} />
 
     <title>{title.includes("AIPrintStudio") ? title : `${title} | AIPrintStudio`}</title>
@@ -36,7 +36,16 @@ const fullOgImageUrl = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogIma
     <meta name="keywords" content="AI print-ready artwork, print-ready AI artwork, AI artwork printing, AI image to vector, AI artwork to vector, CMYK conversion, RGB to CMYK, 300 DPI artwork, print file preparation, artwork recreation, AI logo vectorization, vector conversion, commercial print artwork" />
     <link rel="canonical" href={canonical} />
 
-    <!-- Open Graph -->
+    {/* Preconnect for Google Fonts & Styles */}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&family=Space+Grotesk:wght@500;700&display=swap" />
+
+    {/* Preload critical LCP hero images for maximum PageSpeed */}
+    <link rel="preload" as="image" href="/hero-after.webp" type="image/webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="/hero-before.webp" type="image/webp" fetchpriority="high" />
+
+    {/* Open Graph */}
     <meta property="og:type" content={type} />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content="AIPrintStudio" />
@@ -44,7 +53,7 @@ const fullOgImageUrl = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogIma
     <meta property="og:description" content={description} />
     <meta property="og:image" content={fullOgImageUrl} />
 
-    <!-- Twitter -->
+    {/* Twitter */}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
@@ -52,13 +61,13 @@ const fullOgImageUrl = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogIma
 
     <meta name="robots" content="index, follow" />
 
-    <!-- Default Organization & Website Schema -->
+    {/* Default Organization & Website Schema */}
     <script type="application/ld+json" is:inline set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Organization",
       name: "AIPrintStudio",
       url: "https://aiprintstudio.com",
-      logo: "https://aiprintstudio.com/logo.jpg",
+      logo: "https://aiprintstudio.com/logo.webp",
       description: "Professional AI artwork recreation for commercial print-ready files.",
       contactPoint: {
         "@type": "ContactPoint",

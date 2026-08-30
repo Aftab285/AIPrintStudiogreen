@@ -2,7 +2,6 @@
    AIPrintStudio - Master Global Stylesheet
    ======================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap');
 
 :root {
   /* Brand Primary Colors */
@@ -17,7 +16,7 @@
   /* Accent Colors */
   --color-accent: #f59e0b;
   --color-accent-light: #fef3c7;
-  --color-danger: #ef4444;
+  --color-danger: #dc2626;
   --color-danger-light: #fee2e2;
 
   /* Neutrals */
@@ -327,6 +326,29 @@ button {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+}
+
+.navbar__mobile-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 8px;
+  border-radius: var(--radius-md);
+  background: var(--color-gray-100);
+  cursor: pointer;
+}
+
+.navbar__mobile-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--color-gray-800);
+  border-radius: 2px;
+  transition: all var(--transition-fast);
 }
 
 /* ========================================
@@ -714,7 +736,7 @@ button {
 .format-badge--ai   { background: linear-gradient(160deg, #ff8c21, #e36c04); }
 .format-badge--eps  { background: linear-gradient(160deg, #f25c54, #d63e36); }
 .format-badge--pdf  { background: linear-gradient(160deg, #dc3545, #b52533); }
-.format-badge--svg  { background: linear-gradient(160deg, #fbbf24, #e5a00d); }
+.format-badge--svg  { background: linear-gradient(160deg, #fbbf24, #e5a00d); color: #0f172a; }
 .format-badge--png  { background: linear-gradient(160deg, #4f8bf9, #2d6ce6); }
 .format-badge--tiff { background: linear-gradient(160deg, #a78bfa, #7c3aed); }
 .format-badge--jpg  { background: linear-gradient(160deg, #22d3ee, #0891b2); }
@@ -2549,6 +2571,21 @@ button {
   .hero__description { margin: 0 auto; }
   .hero__trust-badges, .hero__ctas, .hero__social-proof { justify-content: center; }
   .navbar__links { display: none; }
+  .navbar__mobile-toggle { display: flex; }
+  .navbar__links.mobile-open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--color-white);
+    padding: 1.5rem 2rem;
+    box-shadow: var(--shadow-xl);
+    border-bottom: 1px solid var(--color-gray-200);
+    gap: 1rem;
+    z-index: 100;
+  }
   .announcement-bar__right { display: none; }
   .problem-grid, .steps-grid, .trust-grid { grid-template-columns: repeat(2, 1fr); }
   .services-grid, .services-hub-grid, .tools-grid, .pricing-grid { grid-template-columns: repeat(2, 1fr); }
