@@ -1,17 +1,10 @@
 import type { APIRoute } from "astro";
 
 export const GET: APIRoute = async () => {
-  const robotsTxt = `# ========================================
-# AIPrintStudio - robots.txt
-# ========================================
+  const robotsTxt = `# Cloudflare Managed Content Signals
+Content-signal: ai-train=no, search=yes
 
-# Standard Search Engine Crawlers
-User-agent: *
-Allow: /
-Disallow: /api/
-Disallow: /_astro/
-
-# AI Scraping & Data Extraction Bots
+# AI Crawler Restrictions
 User-agent: GPTBot
 Disallow: /
 
@@ -41,6 +34,11 @@ Disallow: /
 
 User-agent: Omegabot
 Disallow: /
+
+# Standard Search Engine Crawlers
+User-agent: *
+Allow: /
+Disallow: /api/
 
 # Canonical Sitemap Reference
 Sitemap: https://aiprintstudio.com/sitemap.xml
