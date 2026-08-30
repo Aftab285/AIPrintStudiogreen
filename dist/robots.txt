@@ -2,4 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
+User-agent: OAI-SearchBot
+Allow: /
+
 Sitemap: https://aiprintstudio.com/sitemap.xml

@@ -5,6 +5,9 @@ export const GET: APIRoute = async () => {
 Allow: /
 Disallow: /api/
 
+User-agent: OAI-SearchBot
+Allow: /
+
 Sitemap: https://aiprintstudio.com/sitemap.xml
 `;
 
