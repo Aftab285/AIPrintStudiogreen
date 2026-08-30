@@ -1,0 +1,50 @@
+---
+import { toolsData } from "../data/toolsData.js";
+
+const toolsList = Object.values(toolsData);
+const extraTools = ["Claude", "Gemini", "Leonardo AI", "Recraft", "DeepSeek", "Kimi"];
+---
+
+<section class="tools-section" id="supported-tools" aria-labelledby="tools-heading">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-badge">Universal Compatibility</span>
+      <h2 class="section-title" id="tools-heading">
+        Works with Artwork from <span class="highlight-text">Every AI Generator</span>
+      </h2>
+      <p class="section-subtitle">
+        No matter which generative model you used to create your image, our pre-press team specializes in preparing it for commercial physical printing.
+      </p>
+    </div>
+
+    <div class="tools-grid">
+      {toolsList.map((tool) => (
+        <div class="tool-card">
+          <div class="tool-card__header">
+            <h3 class="tool-card__name">{tool.name}</h3>
+            <span class="tool-card__native-res">{tool.startingDpi}</span>
+          </div>
+          <p class="tool-card__desc">{tool.tagline}</p>
+          <div class="tool-card__specs">
+            <span class="tool-card__spec">Native: {tool.nativeRes}</span>
+            <span class="tool-card__spec text-success">Target: {tool.targetRes}</span>
+          </div>
+          <a href={`/guides/${tool.slug}`} class="tool-card__link">
+            Read Printing Guide →
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <div class="extra-tools-strip">
+      <span class="extra-tools-strip__label">Also Fully Supporting:</span>
+      <div class="extra-tools-tags">
+        {extraTools.map((name) => (
+          <span class="extra-tool-tag">
+            ✓ {name}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

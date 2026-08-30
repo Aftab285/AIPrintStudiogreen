@@ -1,0 +1,72 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import AnnouncementBar from "../../components/AnnouncementBar.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import WhatsAppFloat from "../../components/WhatsAppFloat.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import CTABanner from "../../components/CTABanner.astro";
+import { servicesData } from "../../data/servicesData.js";
+
+const servicesList = Object.values(servicesData);
+---
+
+<Layout
+  title="Commercial AI Print Services — Vectorization, CMYK & Pre-Press | AIPrintStudio"
+  description="Browse all 13 commercial pre-press services for AI-generated images. AI artwork recreation, logo vectorization, t-shirt prep, poster scaling, packaging dielines, and KDP covers."
+>
+  <AnnouncementBar />
+  <Navbar activePath="/services" />
+  <main class="subpage-main">
+    <div class="subpage-hero">
+      <div class="container">
+        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Services" }]} />
+        <h1 class="subpage-hero__title">
+          Commercial Print-Ready Services for <span class="highlight-text">AI Artwork</span>
+        </h1>
+        <p class="subpage-hero__subtitle">
+          We convert raw AI images from Midjourney, ChatGPT, DALL·E, and Flux into 100% press-ready vector and high-resolution master files for physical printing.
+        </p>
+      </div>
+    </div>
+
+    <section class="services-hub-section">
+      <div class="container">
+        <div class="services-hub-grid">
+          {servicesList.map((srv) => (
+            <div class="service-hub-card">
+              <div class="service-hub-card__top">
+                <span class="service-hub-card__badge">{srv.badge}</span>
+                <span class="service-hub-card__price">✓ Press-Ready</span>
+              </div>
+              <h2 class="service-hub-card__title">
+                <a href={`/services/${srv.slug}`}>{srv.title}</a>
+              </h2>
+              <p class="service-hub-card__desc">{srv.summary}</p>
+              
+              <div class="service-hub-card__deliverables">
+                <span class="deliverables-label">Deliverables:</span>
+                <div class="deliverables-tags">
+                  {srv.deliverables.slice(0, 3).map((d) => (
+                    <span class="deliverable-tag">{d}</span>
+                  ))}
+                </div>
+              </div>
+
+              <div class="service-hub-card__footer">
+                <span class="service-hub-card__turnaround">⚡ {srv.turnaround}</span>
+                <a href={`/services/${srv.slug}`} class="btn btn--outline btn--sm">
+                  View Service Specs →
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTABanner />
+  </main>
+  <Footer />
+  <WhatsAppFloat />
+</Layout>

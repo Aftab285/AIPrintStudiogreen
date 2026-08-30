@@ -1,0 +1,225 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import AnnouncementBar from "../../components/AnnouncementBar.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import WhatsAppFloat from "../../components/WhatsAppFloat.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import QuoteForm from "../../components/QuoteForm.astro";
+import CTABanner from "../../components/CTABanner.astro";
+import { servicesData } from "../../data/servicesData.js";
+
+export async function getStaticPaths() {
+  return Object.keys(servicesData).map((slug) => ({
+    params: { slug },
+    props: { service: servicesData[slug] },
+  }));
+}
+
+const { service } = Astro.props;
+
+const whatsappUrl =
+  "https://wa.me/923479429415?text=" +
+  encodeURIComponent(
+    `Hello! I need ${service.title} for my AI artwork. Can we discuss specs and a custom quote?`
+  );
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: service.title,
+  description: service.metaDescription,
+  provider: {
+    "@type": "Organization",
+    name: "AIPrintStudio",
+    url: "https://aiprintstudio.com",
+  },
+};
+---
+
+<Layout
+  title={`${service.metaTitle} | AIPrintStudio`}
+  description={service.metaDescription}
+  canonical={`https://aiprintstudio.com/services/${service.slug}`}
+  schema={serviceSchema}
+>
+  <AnnouncementBar />
+  <Navbar activePath="/services" />
+  <main class="subpage-main service-detail-page">
+    {/* Service Hero */}
+    <div class="subpage-hero">
+      <div class="container">
+        <Breadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Services", href: "/services" },
+            { label: service.shortTitle },
+          ]}
+        />
+        <div class="service-detail-hero">
+          <div class="service-detail-hero__content">
+            <span class="section-badge">{service.badge}</span>
+            <h1 class="subpage-hero__title">{service.heroHeading}</h1>
+            <p class="subpage-hero__subtitle">{service.heroSubheading}</p>
+            
+            <div class="service-detail-meta-pills">
+              <span class="meta-pill">✓ <strong>100% Commercial Ready</strong></span>
+              <span class="meta-pill">⚡ Turnaround: <strong>{service.turnaround}</strong></span>
+              <span class="meta-pill">✓ 100% Human Craftsmanship</span>
+            </div>
+
+            <div class="service-detail-actions">
+              <a
+                href={whatsappUrl}
+                class="btn btn--primary btn--large"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Talk to Me on WhatsApp →
+              </a>
+              <a href="#quote" class="btn btn--outline btn--large">
+                Get a Free Quote
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Overview & Key Takeaways (AEO) */}
+    <section class="service-overview-section">
+      <div class="container">
+        <div class="service-content-grid">
+          <div class="service-main-content">
+            <div class="content-card">
+              <h2 class="content-card__title">Service Overview</h2>
+              <p class="content-card__body">{service.summary}</p>
+            </div>
+
+            {/* Key Takeaways Box (AEO Standard) */}
+            <div class="takeaways-box">
+              <h3 class="takeaways-box__title">
+                <span class="takeaways-box__icon">📌</span> Key Takeaways
+              </h3>
+              <ul class="takeaways-box__list">
+                {service.keyTakeaways.map((item) => (
+                  <li>✓ {item}</li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Why AI Fails at this print application */}
+            <div class="content-card">
+              <h2 class="content-card__title">
+                Why Raw AI Files Fail for {service.shortTitle}
+              </h2>
+              <div class="issues-list">
+                {service.whyAiFails.map((issue) => (
+                  <div class="issue-item">
+                    <h4 class="issue-item__title">✕ {issue.title}</h4>
+                    <p class="issue-item__desc">{issue.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Step-by-Step Recreation Process */}
+            <div class="content-card">
+              <h2 class="content-card__title">
+                Our 4-Step Technical Reproduction Process
+              </h2>
+              <div class="process-timeline">
+                {service.processSteps.map((step) => (
+                  <div class="timeline-item">
+                    <div class="timeline-item__num">{step.step}</div>
+                    <div class="timeline-item__content">
+                      <h4 class="timeline-item__title">{step.title}</h4>
+                      <p class="timeline-item__desc">{step.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Comparison Table */}
+            <div class="content-card">
+              <h2 class="content-card__title">
+                Raw AI vs AIPrintStudio Master Recreations
+              </h2>
+              <div class="table-responsive">
+                <table class="comparison-table">
+                  <thead>
+                    <tr>
+                      <th>Specification</th>
+                      <th>Raw AI Output</th>
+                      <th>AIPrintStudio Master</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {service.comparisonTable.map((row) => (
+                      <tr>
+                        <td><strong>{row.feature}</strong></td>
+                        <td class="text-danger">{row.rawAi}</td>
+                        <td class="text-success"><strong>{row.ourService}</strong></td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Deliverables */}
+            <div class="content-card">
+              <h2 class="content-card__title">Deliverable File Formats Included</h2>
+              <div class="deliverables-grid">
+                {service.deliverables.map((item) => (
+                  <div class="deliverable-pill">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Service Specific FAQs */}
+            <div class="content-card">
+              <h2 class="content-card__title">Frequently Asked Questions</h2>
+              <div class="faq-list">
+                {service.faqs.map((faq) => (
+                  <div class="faq-card">
+                    <h4 class="faq-card__question">Q: {faq.q}</h4>
+                    <p class="faq-card__answer">{faq.a}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Sidebar with Quote Form */}
+          <aside class="service-sidebar" id="quote">
+            <QuoteForm defaultService={service.title} />
+            
+            <div class="sidebar-contact-card">
+              <h4>Need Immediate Help?</h4>
+              <p>Speak directly with our pre-press lead on WhatsApp for instant feedback on your AI file.</p>
+              <a
+                href={whatsappUrl}
+                class="btn btn--primary btn--full"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp +92 347 9429415
+              </a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <CTABanner />
+  </main>
+  <Footer />
+  <WhatsAppFloat />
+</Layout>

@@ -1,0 +1,163 @@
+---
+interface Props {
+  defaultService?: string;
+}
+
+const { defaultService = "AI Artwork Recreation" } = Astro.props;
+---
+
+<div class="quote-form-card" id="quote-form-wrapper">
+  <div class="quote-form-card__header">
+    <h3 class="quote-form-card__title">Get a Free Pre-Press Quote</h3>
+    <p class="quote-form-card__subtitle">
+      Get expert file inspection and a personalized quote within 15 minutes.
+    </p>
+  </div>
+
+  <div id="quote-form-success" class="quote-form-success" style="display: none;">
+    <div class="quote-form-success__icon">✓</div>
+    <h4 id="success-name">Thank you!</h4>
+    <p>
+      Your project details were prepared for WhatsApp. We will connect with you immediately to inspect your file and provide your quote.
+    </p>
+  </div>
+
+  <form id="quote-form-element" class="quote-form">
+    <div class="form-group">
+      <label for="quote-name">Your Name</label>
+      <input
+        type="text"
+        id="quote-name"
+        name="name"
+        required
+        placeholder="e.g. Sarah Jenkins"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="quote-email">Email Address</label>
+      <input
+        type="email"
+        id="quote-email"
+        name="email"
+        required
+        placeholder="sarah@example.com"
+      />
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="quote-service">Service Needed</label>
+        <select id="quote-service" name="service">
+          <option value="AI Artwork Recreation" selected={defaultService === "AI Artwork Recreation"}>AI Artwork Recreation</option>
+          <option value="AI Image to Vector" selected={defaultService === "AI Image to Vector"}>AI Image to Vector</option>
+          <option value="Logo Vectorization" selected={defaultService === "Logo Vectorization"}>Logo Vectorization</option>
+          <option value="T-Shirt / Apparel Artwork" selected={defaultService.includes("T-Shirt")}>T-Shirt / Apparel Artwork</option>
+          <option value="Poster / Wall Art Prep" selected={defaultService.includes("Poster")}>Poster / Wall Art Prep</option>
+          <option value="Packaging & Dielines" selected={defaultService.includes("Packaging")}>Packaging &amp; Dielines</option>
+          <option value="Book Cover (KDP/Ingram)" selected={defaultService.includes("Book")}>Book Cover (KDP/Ingram)</option>
+          <option value="Business Card Setup" selected={defaultService.includes("Business")}>Business Card Setup</option>
+          <option value="Die-Cut Sticker Artwork" selected={defaultService.includes("Sticker")}>Die-Cut Sticker Artwork</option>
+          <option value="Large Banner & Signage" selected={defaultService.includes("Banner")}>Large Banner &amp; Signage</option>
+          <option value="Product Label Design" selected={defaultService.includes("Label")}>Product Label Design</option>
+          <option value="CMYK Color Conversion" selected={defaultService.includes("CMYK")}>CMYK Color Conversion</option>
+          <option value="Preflight Inspection Audit" selected={defaultService.includes("Preflight")}>Preflight Inspection Audit</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="quote-ai-tool">AI Tool Used</label>
+        <select id="quote-ai-tool" name="aiTool">
+          <option value="Midjourney">Midjourney</option>
+          <option value="ChatGPT / DALL-E">ChatGPT / DALL·E</option>
+          <option value="Flux">Flux</option>
+          <option value="Ideogram">Ideogram</option>
+          <option value="Canva AI">Canva AI</option>
+          <option value="Adobe Firefly">Adobe Firefly</option>
+          <option value="Claude">Claude</option>
+          <option value="Gemini">Gemini</option>
+          <option value="Leonardo AI">Leonardo AI</option>
+          <option value="Other">Other / Multiple</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="quote-dims">Target Print Size</label>
+        <input
+          type="text"
+          id="quote-dims"
+          name="targetDimensions"
+          placeholder="e.g. 18x24 inches, 3.5x2, or Vector"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="quote-substrate">Print Application</label>
+        <select id="quote-substrate" name="substrate">
+          <option value="Posters / Wall Art">Posters / Wall Art</option>
+          <option value="T-Shirts / Apparel">T-Shirts / Apparel</option>
+          <option value="Die-Cut Stickers">Die-Cut Stickers</option>
+          <option value="Packaging / Boxes">Packaging / Boxes</option>
+          <option value="Book Cover (KDP/Ingram)">Book Cover (KDP/Ingram)</option>
+          <option value="Business Cards">Business Cards</option>
+          <option value="Product Labels">Product Labels</option>
+          <option value="Banners / Signage">Banners / Signage</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="quote-notes">Project Details / Special Requirements</label>
+      <textarea
+        id="quote-notes"
+        name="notes"
+        rows="3"
+        placeholder="Describe your artwork or any specific questions..."
+      ></textarea>
+    </div>
+
+    <button type="submit" class="btn btn--primary btn--full btn--large">
+      Send Project Details on WhatsApp →
+    </button>
+    <span class="quote-form-disclaimer">
+      🔒 100% Confidential. We never share your AI artwork or business details.
+    </span>
+  </form>
+</div>
+
+<script>
+  const form = document.getElementById("quote-form-element") as HTMLFormElement;
+  const successBox = document.getElementById("quote-form-success");
+  const successName = document.getElementById("success-name");
+
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    const name = fd.get("name") as string;
+    const email = fd.get("email") as string;
+    const service = fd.get("service") as string;
+    const aiTool = fd.get("aiTool") as string;
+    const targetDimensions = (fd.get("targetDimensions") as string) || "Not sure yet";
+    const substrate = fd.get("substrate") as string;
+    const notes = (fd.get("notes") as string) || "None";
+
+    const msg = `Hello! I would like a quote for AI Print Preparation:
+- Name: ${name}
+- Email: ${email}
+- Service Needed: ${service}
+- AI Tool Used: ${aiTool}
+- Target Print Dimensions: ${targetDimensions}
+- Substrate / Medium: ${substrate}
+- Notes: ${notes}`;
+
+    const url = `https://wa.me/923479429415?text=${encodeURIComponent(msg)}`;
+    window.open(url, "_blank");
+
+    if (form) form.style.display = "none";
+    if (successBox) successBox.style.display = "block";
+    if (successName && name) successName.textContent = `Thank you, ${name}!`;
+  });
+</script>

@@ -1,0 +1,43 @@
+---
+import Layout from "../layouts/Layout.astro";
+import AnnouncementBar from "../components/AnnouncementBar.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import WhatsAppFloat from "../components/WhatsAppFloat.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+---
+
+<Layout
+  title="Terms of Service | AIPrintStudio"
+  description="AIPrintStudio Terms of Service. Review our service scope, 100% commercial print acceptance guarantee, and revision terms."
+>
+  <AnnouncementBar />
+  <Navbar activePath="/terms" />
+  <main class="subpage-main">
+    <div class="subpage-hero">
+      <div class="container">
+        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Terms of Service" }]} />
+        <h1 class="subpage-hero__title">Terms of Service</h1>
+        <p class="subpage-hero__subtitle">Last Updated: August 2026</p>
+      </div>
+    </div>
+
+    <section class="container py-8">
+      <div class="content-card legal-content">
+        <h2>1. Services Offered</h2>
+        <p>AIPrintStudio provides pre-press graphic reproduction, vector tracing, CMYK color management, and file preparation services for AI-generated images. We prepare digital master files (.AI, .EPS, .PDF/X, .SVG, .PNG, .TIFF) for commercial physical manufacturing.</p>
+
+        <h2 class="mt-6">2. 100% Print Shop Acceptance Guarantee</h2>
+        <p>We guarantee that all files delivered by AIPrintStudio comply with commercial printing press standards. If your print shop flags a preflight error (e.g. bleeds, color mode, vector curves), we will revise the file free of charge or communicate directly with your printer until approved.</p>
+
+        <h2 class="mt-6">3. Commercial Rights &amp; Ownership</h2>
+        <p>Upon final delivery, the client retains 100% full commercial rights to use, print, trademark, and distribute the completed vector and raster master files.</p>
+
+        <h2 class="mt-6">4. Turnaround Times</h2>
+        <p>Standard turnaround is 12 to 24 hours from project confirmation. Complex multi-page packaging and large banner scopes may take up to 48 hours as agreed during initial consultation.</p>
+      </div>
+    </section>
+  </main>
+  <Footer />
+  <WhatsAppFloat />
+</Layout>

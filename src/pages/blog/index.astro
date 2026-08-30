@@ -1,0 +1,60 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import AnnouncementBar from "../../components/AnnouncementBar.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import WhatsAppFloat from "../../components/WhatsAppFloat.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import CTABanner from "../../components/CTABanner.astro";
+import { articlesData } from "../../data/articlesData.js";
+
+const articlesList = Object.values(articlesData);
+---
+
+<Layout
+  title="AI Pre-Press Knowledge Hub & Commercial Printing Guides | AIPrintStudio"
+  description="Master the technical science of printing AI-generated artwork. In-depth articles covering DPI math, CMYK color management, vector tracing, and commercial preflight standards."
+>
+  <AnnouncementBar />
+  <Navbar activePath="/blog" />
+  <main class="subpage-main">
+    <div class="subpage-hero">
+      <div class="container">
+        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Knowledge Hub" }]} />
+        <h1 class="subpage-hero__title">
+          Commercial Pre-Press <span class="highlight-text">Knowledge Hub</span>
+        </h1>
+        <p class="subpage-hero__subtitle">
+          Authoritative technical breakdowns, color management guides, and tutorials for preparing AI artwork for commercial manufacturing.
+        </p>
+      </div>
+    </div>
+
+    <section class="container py-8">
+      <div class="blog-grid">
+        {articlesList.map((art) => (
+          <article class="blog-card">
+            <div class="blog-card__header">
+              <span class="blog-card__category">{art.category}</span>
+              <span class="blog-card__read-time">📖 {art.readTime}</span>
+            </div>
+            <h2 class="blog-card__title">
+              <a href={`/blog/${art.slug}`}>{art.title}</a>
+            </h2>
+            <p class="blog-card__summary">{art.summary}</p>
+            <div class="blog-card__footer">
+              <span class="blog-card__date">{art.publishDate}</span>
+              <a href={`/blog/${art.slug}`} class="blog-card__link">
+                Read Guide →
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <CTABanner />
+  </main>
+  <Footer />
+  <WhatsAppFloat />
+</Layout>

@@ -1,0 +1,50 @@
+---
+import { servicesData } from "../data/servicesData.js";
+
+const servicesList = Object.values(servicesData);
+---
+
+<section class="services-section" id="services" aria-labelledby="services-heading">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-badge">Commercial Pre-Press Services</span>
+      <h2 class="section-title" id="services-heading">
+        Specialized Services for <span class="highlight-text">Every Print Format</span>
+      </h2>
+      <p class="section-subtitle">
+        From tiny 1-inch kiss-cut stickers to 40-foot outdoor billboards, we prepare AI artwork to the exact technical specifications required by commercial printers worldwide.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      {servicesList.map((srv) => (
+        <div class="service-card">
+          <div class="service-card__header">
+            <div class="service-card__icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+              </svg>
+            </div>
+            <span class="service-card__badge">{srv.badge}</span>
+          </div>
+          <h3 class="service-card__title">
+            <a href={`/services/${srv.slug}`}>{srv.shortTitle}</a>
+          </h3>
+          <p class="service-card__desc">{srv.summary}</p>
+          
+          <div class="service-card__meta">
+            <span class="service-card__price">✓ <strong>100% Commercial Ready</strong></span>
+            <span class="service-card__turnaround">⚡ {srv.turnaround}</span>
+          </div>
+
+          <div class="service-card__footer">
+            <a href={`/services/${srv.slug}`} class="service-card__link">
+              View Service Specs →
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

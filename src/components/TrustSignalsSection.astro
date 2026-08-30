@@ -1,0 +1,69 @@
+---
+const trustPoints = [
+  {
+    title: "100% Manual Human Quality Control",
+    desc: "Every anchor point, color curve, and bleed margin is reviewed and adjusted by experienced pre-press production artists—never left to blind automated algorithms.",
+  },
+  {
+    title: "Commercial Pre-Press Expertise",
+    desc: "Deep knowledge of industrial printing presses (Offset Lithography, Flexography, Screen Print, Direct-to-Garment, Large Format UV, and Digital Press).",
+  },
+  {
+    title: "Master Vector & High-DPI Deliverables",
+    desc: "You receive fully layered Adobe Illustrator (.AI), vector .EPS, scalable .SVG, print-ready .PDF/X, and 300+ DPI uncompressed TIFF files.",
+  },
+  {
+    title: "Fast, Personal WhatsApp Communication",
+    desc: "Speak directly with the specialist working on your files. Ask questions, discuss substrates, and get instant updates with average 15-minute response times.",
+  },
+];
+---
+
+<section class="trust-section" id="why-us" aria-labelledby="trust-heading">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-badge">Why Creators Trust Us</span>
+      <h2 class="section-title" id="trust-heading">
+        Built for Businesses That Require <span class="highlight-text">Flawless Print Results</span>
+      </h2>
+      <p class="section-subtitle">
+        We bridge the gap between creative AI imagination and industrial printing machinery with precision human craftsmanship.
+      </p>
+    </div>
+
+    <div class="trust-grid">
+      {trustPoints.map((item, idx) => (
+        <div class="trust-card">
+          <div class="trust-card__icon">
+            {idx === 0 && (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            )}
+            {idx === 1 && (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+              </svg>
+            )}
+            {idx === 2 && (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            )}
+            {idx === 3 && (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            )}
+          </div>
+          <h3 class="trust-card__title">{item.title}</h3>
+          <p class="trust-card__desc">{item.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

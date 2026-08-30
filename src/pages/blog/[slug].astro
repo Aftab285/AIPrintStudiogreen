@@ -1,0 +1,173 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import AnnouncementBar from "../../components/AnnouncementBar.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import WhatsAppFloat from "../../components/WhatsAppFloat.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import CTABanner from "../../components/CTABanner.astro";
+import { articlesData } from "../../data/articlesData.js";
+
+export async function getStaticPaths() {
+  return Object.keys(articlesData).map((slug) => ({
+    params: { slug },
+    props: { article: articlesData[slug] },
+  }));
+}
+
+const { article } = Astro.props;
+
+const whatsappUrl =
+  "https://wa.me/923479429415?text=" +
+  encodeURIComponent(
+    `Hello! I read your article "${article.title}" and have a question about printing my AI artwork.`
+  );
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: article.title,
+  description: article.metaDescription,
+  author: {
+    "@type": "Organization",
+    name: "AIPrintStudio Pre-Press Team",
+    url: "https://aiprintstudio.com",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "AIPrintStudio",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://aiprintstudio.com/logo.jpg",
+    },
+  },
+  datePublished: "2026-08-01T00:00:00Z",
+  mainEntityOfPage: `https://aiprintstudio.com/blog/${article.slug}`,
+};
+---
+
+<Layout
+  title={`${article.metaTitle} | AIPrintStudio`}
+  description={article.metaDescription}
+  canonical={`https://aiprintstudio.com/blog/${article.slug}`}
+  type="article"
+  schema={articleSchema}
+>
+  <AnnouncementBar />
+  <Navbar activePath="/blog" />
+  <main class="subpage-main article-detail-page">
+    <div class="subpage-hero">
+      <div class="container">
+        <Breadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Knowledge Hub", href: "/blog" },
+            { label: article.category },
+          ]}
+        />
+        <div class="article-hero-header">
+          <span class="section-badge">{article.category}</span>
+          <h1 class="subpage-hero__title article-title">{article.title}</h1>
+          <div class="article-meta-bar">
+            <span>By <strong>{article.author}</strong></span>
+            <span>•</span>
+            <span>{article.publishDate}</span>
+            <span>•</span>
+            <span>{article.readTime}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="container py-8">
+      <div class="article-layout-grid">
+        {/* Main Content */}
+        <article class="article-main-content">
+          {/* Short Answer / Summary Box (AEO Standard) */}
+          <div class="article-summary-box">
+            <h3 class="summary-title">💡 Summary &amp; Direct Answer</h3>
+            <p>{article.summary}</p>
+          </div>
+
+          {/* Key Takeaways Box (AEO / GEO Standard) */}
+          <div class="takeaways-box mt-6">
+            <h3 class="takeaways-box__title">📌 Key Takeaways</h3>
+            <ul class="takeaways-box__list">
+              {article.keyTakeaways.map((item) => (
+                <li>✓ {item}</li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Article Body Sections */}
+          <div class="article-body-content mt-8">
+            {article.sections.map((sec) => (
+              <section class="article-section-block">
+                <h2>{sec.heading}</h2>
+                <div
+                  class="section-markdown-text"
+                  set:html={sec.content
+                    .replace(/\n\n/g, "<p>")
+                    .replace(/\n\* /g, "<li>")
+                    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")}
+                />
+              </section>
+            ))}
+          </div>
+
+          {/* FAQs Section */}
+          {article.faqs && article.faqs.length > 0 && (
+            <div class="article-faqs-block mt-8">
+              <h2>Frequently Asked Questions</h2>
+              <div class="faq-list">
+                {article.faqs.map((faq) => (
+                  <div class="faq-card">
+                    <h4 class="faq-card__question">Q: {faq.q}</h4>
+                    <p class="faq-card__answer">{faq.a}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </article>
+
+        {/* Sidebar */}
+        <aside class="article-sidebar">
+          <div class="sidebar-cta-box">
+            <h3>Need Print-Ready AI Files?</h3>
+            <p>
+              Skip the headache of blurry prints and color shifts. We recreate AI files manually with guaranteed printer approval.
+            </p>
+            <a
+              href={whatsappUrl}
+              class="btn btn--primary btn--full"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Talk to Me on WhatsApp →
+            </a>
+            <a href="/contact" class="btn btn--outline btn--full mt-2">
+              Get a Free Quote
+            </a>
+          </div>
+
+          <div class="sidebar-links-box mt-6">
+            <h4>Popular Pre-Press Services</h4>
+            <ul>
+              <li><a href="/services/ai-artwork-recreation">AI Artwork Recreation</a></li>
+              <li><a href="/services/ai-image-to-vector">AI Image to Vector</a></li>
+              <li><a href="/services/t-shirt-artwork">T-Shirt &amp; Apparel Prep</a></li>
+              <li><a href="/services/logo-vectorization">Logo Vectorization</a></li>
+              <li><a href="/services/poster-preparation">Large Format Posters</a></li>
+              <li><a href="/services/cmyk-conversion">CMYK Color Calibration</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <CTABanner />
+  </main>
+  <Footer />
+  <WhatsAppFloat />
+</Layout>

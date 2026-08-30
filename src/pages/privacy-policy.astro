@@ -1,0 +1,43 @@
+---
+import Layout from "../layouts/Layout.astro";
+import AnnouncementBar from "../components/AnnouncementBar.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import WhatsAppFloat from "../components/WhatsAppFloat.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+---
+
+<Layout
+  title="Privacy Policy | AIPrintStudio"
+  description="AIPrintStudio Privacy Policy. We respect your intellectual property, artwork files, and personal data with strict confidentiality."
+>
+  <AnnouncementBar />
+  <Navbar activePath="/privacy-policy" />
+  <main class="subpage-main">
+    <div class="subpage-hero">
+      <div class="container">
+        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Privacy Policy" }]} />
+        <h1 class="subpage-hero__title">Privacy Policy</h1>
+        <p class="subpage-hero__subtitle">Effective Date: August 2026</p>
+      </div>
+    </div>
+
+    <section class="container py-8">
+      <div class="content-card legal-content">
+        <h2>1. Client Artwork &amp; Intellectual Property Confidentiality</h2>
+        <p>At AIPrintStudio, we treat all client artwork, prompts, and project details as strictly confidential. We do not claim any ownership rights over the artwork you provide or the recreated master files we deliver to you. Your files are never resold, shared with third parties, or used for AI model training.</p>
+
+        <h2 class="mt-6">2. Information We Collect</h2>
+        <p>We only collect information necessary to prepare your files and communicate with you, including your name, email address, WhatsApp contact information, and project specifications.</p>
+
+        <h2 class="mt-6">3. File Retention &amp; Deletion</h2>
+        <p>We retain backup copies of your completed master files for 30 days after project delivery in case you require re-downloads. After 30 days, files may be permanently purged upon client request.</p>
+
+        <h2 class="mt-6">4. Contact Information</h2>
+        <p>For questions regarding our privacy practices, contact us directly at <a href="https://wa.me/923479429415" target="_blank" rel="noopener noreferrer">+92 347 9429415</a> or visit our Contact page.</p>
+      </div>
+    </section>
+  </main>
+  <Footer />
+  <WhatsAppFloat />
+</Layout>

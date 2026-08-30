@@ -1,0 +1,49 @@
+---
+import Layout from "../layouts/Layout.astro";
+import AnnouncementBar from "../components/AnnouncementBar.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import WhatsAppFloat from "../components/WhatsAppFloat.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import HowItWorksSection from "../components/HowItWorksSection.astro";
+import CTABanner from "../components/CTABanner.astro";
+---
+
+<Layout
+  title="How It Works — 4-Step AI Artwork Pre-Press Process | AIPrintStudio"
+  description="Learn how AIPrintStudio transforms your raw Midjourney, ChatGPT, and Flux images into commercial print-ready files in 4 simple steps."
+>
+  <AnnouncementBar />
+  <Navbar activePath="/how-it-works" />
+  <main class="subpage-main">
+    <div class="subpage-hero">
+      <div class="container">
+        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "How It Works" }]} />
+        <h1 class="subpage-hero__title">
+          Our 4-Step <span class="highlight-text">Human Pre-Press Process</span>
+        </h1>
+        <p class="subpage-hero__subtitle">
+          We prioritize personal consultation and precision craftsmanship over automated software upscalers. Here is exactly how we take your project from AI concept to physical print perfection.
+        </p>
+      </div>
+    </div>
+
+    <HowItWorksSection />
+
+    <section class="container py-8">
+      <div class="content-card">
+        <h2 class="content-card__title">Why Consultation-First Beats Automated Upload Forms</h2>
+        <p class="content-card__body">
+          Most automated websites make you drag and drop your file into an algorithm that blindly upscales pixels without understanding your print medium. A t-shirt printed via Direct-to-Garment requires completely different underbase and edge transparency than a high-gloss metallic acrylic wall print or a flexographic box packaging dieline.
+        </p>
+        <p class="content-card__body mt-4">
+          By talking with us directly, you get a dedicated pre-press production specialist who tailors your file to your exact printer, paper stock, ink profile, and finishing requirements.
+        </p>
+      </div>
+    </section>
+
+    <CTABanner />
+  </main>
+  <Footer />
+  <WhatsAppFloat />
+</Layout>

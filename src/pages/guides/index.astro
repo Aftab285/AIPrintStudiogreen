@@ -1,0 +1,58 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import AnnouncementBar from "../../components/AnnouncementBar.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import WhatsAppFloat from "../../components/WhatsAppFloat.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import CTABanner from "../../components/CTABanner.astro";
+import { toolsData } from "../../data/toolsData.js";
+
+const toolsList = Object.values(toolsData);
+---
+
+<Layout
+  title="AI Generator Print Guides (Midjourney, DALL-E, Flux) | AIPrintStudio"
+  description="Authoritative technical guides for printing AI artwork generated with Midjourney, ChatGPT, DALL-E 3, Flux, Ideogram, and Canva AI. Overcome pixel and color limits."
+>
+  <AnnouncementBar />
+  <Navbar activePath="/guides" />
+  <main class="subpage-main">
+    <div class="subpage-hero">
+      <div class="container">
+        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "AI Guides" }]} />
+        <h1 class="subpage-hero__title">
+          Commercial Print Guides for <span class="highlight-text">Every AI Generator</span>
+        </h1>
+        <p class="subpage-hero__subtitle">
+          Specific pre-press technical workarounds for Midjourney, ChatGPT, DALL·E 3, Flux, Ideogram, and Canva AI.
+        </p>
+      </div>
+    </div>
+
+    <section class="container py-8">
+      <div class="tools-grid">
+        {toolsList.map((tool) => (
+          <div class="tool-card">
+            <div class="tool-card__header">
+              <h2 class="tool-card__name">{tool.name}</h2>
+              <span class="tool-card__native-res">{tool.startingDpi}</span>
+            </div>
+            <p class="tool-card__desc">{tool.tagline}</p>
+            <div class="tool-card__specs">
+              <span class="tool-card__spec">Native: {tool.nativeRes}</span>
+              <span class="tool-card__spec text-success">Target: {tool.targetRes}</span>
+            </div>
+            <a href={`/guides/${tool.slug}`} class="tool-card__link">
+              Read {tool.name} Print Guide →
+            </a>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <CTABanner />
+  </main>
+  <Footer />
+  <WhatsAppFloat />
+</Layout>

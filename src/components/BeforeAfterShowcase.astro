@@ -1,0 +1,108 @@
+---
+const categories = [
+  { id: "vector", label: "Vector & Logo", beforeDesc: "Raw 72 DPI AI render with blurry edges & gibberish text", afterDesc: "100% Vector master in Adobe Illustrator (.AI/.EPS/.SVG) with clean bezier curves" },
+  { id: "apparel", label: "T-Shirt & Apparel", beforeDesc: "Solid square background with heavy white halo fringe", afterDesc: "Clean transparent alpha mask with vibrant dark-shirt underbase" },
+  { id: "color", label: "CMYK Color Management", beforeDesc: "Muddy, crushed dark shadows and dull out-of-gamut greens", afterDesc: "Calibrated 300% TAC CMYK with brilliant print vibrancy" },
+];
+---
+
+<section class="showcase-section" id="showcase" aria-labelledby="showcase-heading">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-badge">Before &amp; After Quality Proof</span>
+      <h2 class="section-title" id="showcase-heading">
+        See the Difference of <span class="highlight-text">Manual Pre-Press Reproduction</span>
+      </h2>
+      <p class="section-subtitle">
+        Compare raw AI outputs directly against our commercial print-ready master recreations in Adobe Illustrator.
+      </p>
+    </div>
+
+    {/* Tab Controls */}
+    <div class="showcase-tabs" role="tablist">
+      {categories.map((cat, idx) => (
+        <button
+          role="tab"
+          aria-selected={idx === 0 ? "true" : "false"}
+          class={`showcase-tab ${idx === 0 ? "active" : ""}`}
+          data-tab={cat.id}
+          data-before={cat.beforeDesc}
+          data-after={cat.afterDesc}
+        >
+          {cat.label}
+        </button>
+      ))}
+    </div>
+
+    {/* Comparison Display */}
+    <div class="showcase-display">
+      <div class="showcase-card showcase-card--before">
+        <div class="showcase-card__tag showcase-card__tag--before">Raw AI Output (72 DPI)</div>
+        <div class="showcase-card__image-wrap">
+          <img
+            src="/hero-before.jpg"
+            alt="Before manual recreation: AI-generated artwork showing subtle artifacts and pixelation"
+            width="480"
+            height="550"
+            class="showcase-card__img"
+            loading="lazy"
+          />
+        </div>
+        <div class="showcase-card__desc">
+          <span class="showcase-card__status text-danger">✕ Common AI Flaws:</span>
+          <p id="showcase-before-desc">{categories[0].beforeDesc}</p>
+        </div>
+      </div>
+
+      <div class="showcase-divider">
+        <div class="showcase-divider__badge">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </div>
+        <span class="showcase-divider__text">Recreated by Hand</span>
+      </div>
+
+      <div class="showcase-card showcase-card--after">
+        <div class="showcase-card__tag showcase-card__tag--after">Press-Ready Master (300+ DPI / Vector)</div>
+        <div class="showcase-card__image-wrap">
+          <img
+            src="/hero-after.jpg"
+            alt="After manual recreation: Recreated master vector file open in Adobe Illustrator with 100% sharp detail"
+            width="480"
+            height="550"
+            class="showcase-card__img"
+            loading="lazy"
+          />
+        </div>
+        <div class="showcase-card__desc">
+          <span class="showcase-card__status text-success">✓ AIPrintStudio Standard:</span>
+          <p id="showcase-after-desc">{categories[0].afterDesc}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const tabs = document.querySelectorAll(".showcase-tab");
+  const beforeDesc = document.getElementById("showcase-before-desc");
+  const afterDesc = document.getElementById("showcase-after-desc");
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      tabs.forEach((t) => {
+        t.classList.remove("active");
+        t.setAttribute("aria-selected", "false");
+      });
+      tab.classList.add("active");
+      tab.setAttribute("aria-selected", "true");
+
+      const bText = tab.getAttribute("data-before");
+      const aText = tab.getAttribute("data-after");
+      if (beforeDesc && bText) beforeDesc.textContent = bText;
+      if (afterDesc && aText) afterDesc.textContent = aText;
+    });
+  });
+</script>

@@ -1,0 +1,111 @@
+---
+import Layout from "../layouts/Layout.astro";
+import AnnouncementBar from "../components/AnnouncementBar.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import WhatsAppFloat from "../components/WhatsAppFloat.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import BeforeAfterShowcase from "../components/BeforeAfterShowcase.astro";
+import CTABanner from "../components/CTABanner.astro";
+
+const portfolioItems = [
+  {
+    title: "Vintage Mascot Logo Vectorization",
+    aiPrompt: "Midjourney v6 — Retro 1950s diner mascot illustration",
+    substrate: "Screen Printed Hoodies & Vinyl Decals",
+    deliverables: ".AI, .EPS, .SVG, Spot Color Separation",
+    badge: "Vector & Logo",
+  },
+  {
+    title: "Floating Castle Fantasy Poster",
+    aiPrompt: "Midjourney v6 — Ghibli style floating castle landscape",
+    substrate: "24x36” Fine Art Matte Giclée Print",
+    deliverables: "300 DPI TIFF (CMYK GRACoL), PDF/X-1a",
+    badge: "Large Format Wall Art",
+  },
+  {
+    title: "Botanical Craft Gin Packaging Dieline",
+    aiPrompt: "ChatGPT / DALL·E 3 — Intricate botanical gin label with gold filigree",
+    substrate: "Glass Bottle Label with Gold Foil & Spot UV",
+    deliverables: "Layered .AI Dieline, Foil Mask Plate, Spot White",
+    badge: "Packaging & Dielines",
+  },
+  {
+    title: "Cyberpunk Streetwear T-Shirt Graphic",
+    aiPrompt: "Flux Dev — Cyberpunk mecha samurai character with neon highlights",
+    substrate: "Direct-to-Garment (DTG) on Black 100% Cotton",
+    deliverables: "4500x5400px Transparent PNG (300 DPI), High-Contrast Underbase",
+    badge: "Apparel & Merch",
+  },
+  {
+    title: "Epic Fantasy Novel Wraparound Cover",
+    aiPrompt: "Midjourney v6 — Dark dragon fantasy landscape for hardcover book",
+    substrate: "Amazon KDP & IngramSpark Hardcover with Dust Jacket",
+    deliverables: "Exact Spine PDF/X-1a, Barcode Safety Zone, 0.125” Bleed",
+    badge: "Publishing & KDP",
+  },
+  {
+    title: "Holographic Vinyl Die-Cut Sticker Set",
+    aiPrompt: "Ideogram 2.0 — Kawaii anime animal stickers with white borders",
+    substrate: "Sticker Mule Holographic & Clear Vinyl",
+    deliverables: "Continuous Vector CutContour Path, White Ink Underbase",
+    badge: "Stickers & Decals",
+  },
+];
+---
+
+<Layout
+  title="Portfolio & Production Samples | AIPrintStudio"
+  description="Explore our portfolio of AI artwork recreations, vector conversions, t-shirt graphics, packaging dielines, and KDP book covers prepared for commercial print."
+>
+  <AnnouncementBar />
+  <Navbar activePath="/portfolio" />
+  <main class="subpage-main">
+    <div class="subpage-hero">
+      <div class="container">
+        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Portfolio" }]} />
+        <h1 class="subpage-hero__title">
+          Commercial Pre-Press <span class="highlight-text">Portfolio &amp; Proof</span>
+        </h1>
+        <p class="subpage-hero__subtitle">
+          Real examples of AI concept art transformed into high-precision, production-grade vector and high-DPI raster files for commercial manufacturing.
+        </p>
+      </div>
+    </div>
+
+    <BeforeAfterShowcase />
+
+    <section class="container py-8">
+      <div class="section-header text-center">
+        <span class="section-badge">Recent Client Case Studies</span>
+        <h2 class="section-title">Commercial Print Recreations</h2>
+        <p class="section-subtitle">
+          Each project demonstrates manual human reproduction tailored to specific industrial manufacturing presses.
+        </p>
+      </div>
+
+      <div class="portfolio-grid">
+        {portfolioItems.map((item) => (
+          <div class="portfolio-card">
+            <div class="portfolio-card__header">
+              <span class="portfolio-card__badge">{item.badge}</span>
+              <h3 class="portfolio-card__title">{item.title}</h3>
+            </div>
+            <div class="portfolio-card__body">
+              <p class="portfolio-card__prompt"><strong>AI Origin:</strong> {item.aiPrompt}</p>
+              <p class="portfolio-card__substrate"><strong>Print Application:</strong> {item.substrate}</p>
+              <p class="portfolio-card__deliverables"><strong>Deliverables:</strong> {item.deliverables}</p>
+            </div>
+            <div class="portfolio-card__footer">
+              <span class="portfolio-card__status text-success">✓ 100% Commercial Press Approved</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <CTABanner />
+  </main>
+  <Footer />
+  <WhatsAppFloat />
+</Layout>
