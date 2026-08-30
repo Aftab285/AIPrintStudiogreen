@@ -36,22 +36,10 @@ const fullOgImageUrl = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogIma
     <meta name="keywords" content="AI print-ready artwork, print-ready AI artwork, AI artwork printing, AI image to vector, AI artwork to vector, CMYK conversion, RGB to CMYK, 300 DPI artwork, print file preparation, artwork recreation, AI logo vectorization, vector conversion, commercial print artwork" />
     <link rel="canonical" href={canonical} />
 
-    {/* Preconnect for Google Fonts */}
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
-    {/* Non-blocking async font stylesheet for 100% PageSpeed score */}
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&family=Space+Grotesk:wght@500;700&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&family=Space+Grotesk:wght@500;700&display=swap" media="print" onload="this.media='all'" />
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&family=Space+Grotesk:wght@500;700&display=swap" />
-    </noscript>
-
-    {/* Responsive high-priority preloads for LCP hero images */}
-    <link rel="preload" as="image" href="/hero-after-300.webp" type="image/webp" media="(max-width: 768px)" fetchpriority="high" />
+    {/* Preload only the primary LCP hero image with exact responsive media query */}
+    <link rel="preload" as="image" href="/hero-after-220.webp" type="image/webp" media="(max-width: 480px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/hero-after-300.webp" type="image/webp" media="(min-width: 481px) and (max-width: 768px)" fetchpriority="high" />
     <link rel="preload" as="image" href="/hero-after-600.webp" type="image/webp" media="(min-width: 769px)" fetchpriority="high" />
-    <link rel="preload" as="image" href="/hero-before-300.webp" type="image/webp" media="(max-width: 768px)" fetchpriority="high" />
-    <link rel="preload" as="image" href="/hero-before-600.webp" type="image/webp" media="(min-width: 769px)" fetchpriority="high" />
 
     {/* Open Graph */}
     <meta property="og:type" content={type} />
@@ -75,7 +63,7 @@ const fullOgImageUrl = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogIma
       "@type": "Organization",
       name: "AIPrintStudio",
       url: "https://aiprintstudio.com",
-      logo: "https://aiprintstudio.com/logo.webp",
+      logo: "https://aiprintstudio.com/logo-80.webp",
       description: "Professional AI artwork recreation for commercial print-ready files.",
       contactPoint: {
         "@type": "ContactPoint",
@@ -112,6 +100,23 @@ const fullOgImageUrl = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogIma
     {schema && (
       <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
     )}
+
+    {/* Asynchronous font loading to guarantee 0ms render-blocking */}
+    <script is:inline>
+      function loadFonts() {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&family=Space+Grotesk:wght@500;700&display=swap';
+        document.head.appendChild(link);
+      }
+      if (typeof window !== 'undefined') {
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(loadFonts);
+        } else {
+          window.addEventListener('load', loadFonts);
+        }
+      }
+    </script>
   </head>
   <body>
     <slot />
