@@ -1,0 +1,669 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import AnnouncementBar from "../../components/AnnouncementBar.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import WhatsAppFloat from "../../components/WhatsAppFloat.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import QuoteForm from "../../components/QuoteForm.astro";
+
+const whatsappUrl =
+  "https://wa.me/923479429415?text=" +
+  encodeURIComponent(
+    "Hello! I have a hand-drawn sketch / rough concept that I need recreated as professional digital artwork. Can we discuss my project?"
+  );
+
+const pageTitle = "Sketch to Digital Design Service | Convert Hand-Drawn Sketches";
+const pageDescription = "Turn your pencil sketch, hand-drawn concept, wireframe, or rough drawing into professional digital artwork. AIPrintStudio recreates sketches in Illustrator, Photoshop, vector, and high-resolution formats.";
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Sketch to Digital Design Service",
+  description: pageDescription,
+  provider: {
+    "@type": "Organization",
+    name: "AIPrintStudio",
+    url: "https://aiprintstudio.com",
+  },
+  serviceType: "Sketch to Digital Design",
+  areaServed: [
+    { "@type": "Country", name: "United States" },
+    { "@type": "Country", name: "Canada" },
+    { "@type": "Country", name: "United Kingdom" },
+    { "@type": "Country", name: "Australia" },
+  ],
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://aiprintstudio.com/" },
+    { "@type": "ListItem", position: 2, name: "Services", item: "https://aiprintstudio.com/services/" },
+    { "@type": "ListItem", position: 3, name: "Sketch to Digital Design", item: "https://aiprintstudio.com/services/sketch-to-digital-design/" },
+  ],
+};
+
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: pageTitle,
+  description: pageDescription,
+  url: "https://aiprintstudio.com/services/sketch-to-digital-design/",
+  isPartOf: {
+    "@type": "WebSite",
+    name: "AIPrintStudio",
+    url: "https://aiprintstudio.com",
+  },
+};
+
+const faqs = [
+  { q: "Can you turn my pencil sketch into a digital design?", a: "Yes. Send us a photograph or scan of your pencil sketch along with a description of what you need. We will recreate the concept as clean, professional digital artwork using Illustrator, Photoshop, or the appropriate design tool for your project." },
+  { q: "Can you convert a hand-drawn sketch to Illustrator?", a: "Yes. When a project requires scalable vector artwork — such as logos, icons, diagrams, or graphics intended for multiple sizes — we recreate the sketch in Adobe Illustrator with clean vector paths, organized layers, and editable elements." },
+  { q: "Can you recreate my drawing in Photoshop?", a: "Yes. For complex compositions, textured artwork, raster-based illustrations, and designs that involve photographic elements or detailed color work, we recreate sketches in Adobe Photoshop." },
+  { q: "Can you convert my sketch to vector?", a: "Yes. Suitable hand-drawn concepts — including logos, icons, typography, and graphic elements — can be recreated as clean vector artwork that scales to any size without losing quality." },
+  { q: "Can I send a photo of my drawing?", a: "Absolutely. A clear phone photograph of your sketch is perfectly fine as a starting point. We work from photographs, scans, screenshots, and even photos of whiteboard drawings." },
+  { q: "Does my sketch need to be clean?", a: "No. Your sketch does not need to be perfect. Even rough pencil drawings, messy notebook sketches, and quick concept doodles can serve as a starting point. We review the concept and determine what can be recreated digitally." },
+  { q: "Can you recreate a hand-drawn logo?", a: "Yes. We regularly recreate hand-drawn logo concepts as professional digital vector artwork. This includes cleaning up the design, setting proper typography, establishing color values, and delivering the logo in standard brand identity formats." },
+  { q: "Can you digitize a website wireframe?", a: "Yes. Hand-drawn website wireframes and app layout sketches can be recreated as structured digital wireframes or visual layouts using Figma or other appropriate design tools." },
+  { q: "Can you turn my paper drawing into a professional design?", a: "Yes. That is exactly what this service is for. You provide the concept on paper, and we recreate it as professional digital artwork suitable for its intended use." },
+  { q: "Can I receive an editable Illustrator file?", a: "Yes. When vector artwork is part of the project scope, we deliver editable Adobe Illustrator (.AI) files with organized layers and clean paths." },
+  { q: "Can I receive a Photoshop PSD?", a: "Yes. When the project involves raster-based work, we can deliver layered Photoshop (.PSD) files with organized layers." },
+  { q: "Can you improve the design while digitizing it?", a: "Yes. Depending on the project, we can clean up proportions, refine shapes, improve alignment, suggest typography improvements, and enhance the overall design while maintaining the core concept." },
+  { q: "Can you preserve my original concept?", a: "Absolutely. We always aim to maintain the intent and character of your original sketch. If you want the digital version to closely match your drawing, we will follow your concept faithfully." },
+  { q: "What file formats can I receive?", a: "Depending on the project type and agreed scope, potential formats include AI, PSD, SVG, EPS, PDF, PNG, JPG, and TIFF. The specific formats depend on what the project requires." },
+  { q: "How much does sketch-to-digital design cost?", a: "Pricing depends on the complexity of the sketch, the type of digital artwork required, and the scope of the project. Send us your sketch for a free review and personalized quote." },
+  { q: "How long does sketch digitization take?", a: "Turnaround depends on complexity. Simple designs can be completed in 12–24 hours. More complex projects may take 2–5 business days. We will provide an estimated timeline with your quote." },
+  { q: "Can you recreate a complicated drawing?", a: "Yes. We handle projects ranging from simple logo concepts to complex multi-element illustrations. For highly detailed work, we discuss the scope and timeline during the quote process." },
+  { q: "Can you make the final artwork print-ready?", a: "Yes. When the digital artwork is intended for print production, we can prepare it with proper resolution (300+ DPI), CMYK color mode, bleed, and other production specifications." },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.a,
+    },
+  })),
+};
+
+const serviceCards = [
+  { icon: "✏️", title: "Pencil & Pen Sketches", desc: "Turn rough pencil or pen drawings into clean digital artwork ready for its intended use." },
+  { icon: "🎨", title: "Hand-Drawn Logos", desc: "Recreate a logo idea as professional digital artwork and, when appropriate, scalable vector artwork." },
+  { icon: "📐", title: "Sketch to Vector", desc: "Convert suitable hand-drawn concepts into clean vector paths that can be scaled for different applications." },
+  { icon: "🖊️", title: "Sketch to Illustrator", desc: "Recreate artwork as an editable Adobe Illustrator design when the project requires vector or layered artwork." },
+  { icon: "🖼️", title: "Sketch to Photoshop", desc: "Recreate complex compositions, artwork, layouts, or raster-based designs in Photoshop." },
+  { icon: "📱", title: "Website & App Wireframes", desc: "Turn hand-drawn interface ideas into organized digital wireframes or visual layouts." },
+  { icon: "📦", title: "Product Concepts", desc: "Digitize rough product drawings and visual concepts for presentations, development, or further design work." },
+  { icon: "🏷️", title: "Packaging Concepts", desc: "Recreate rough packaging, label, or box concepts into professional digital artwork." },
+  { icon: "📊", title: "Diagrams & Illustrations", desc: "Transform hand-drawn diagrams, illustrations, charts, and visual concepts into clean digital artwork." },
+  { icon: "🔧", title: "Custom Design Recreation", desc: "If your project doesn't fit a standard category, send the sketch and explain what you need. We'll review it." },
+];
+
+const processSteps = [
+  { num: "01", title: "Send Your Sketch", desc: "Upload your drawing, photograph, scan, wireframe, or rough concept. A clear phone photo works perfectly." },
+  { num: "02", title: "Tell Us What You Want", desc: "Explain what should stay the same, what needs to change, and where you plan to use the final design." },
+  { num: "03", title: "We Recreate It Digitally", desc: "Our designer recreates the concept using Illustrator, Photoshop, or another appropriate professional design tool." },
+  { num: "04", title: "Receive Your Digital Artwork", desc: "Receive the final artwork in the formats agreed for your project. Potential formats include AI, PSD, SVG, EPS, PDF, PNG, JPG, and TIFF." },
+];
+
+const beforeAfterExamples = [
+  {
+    title: "Pencil Logo Sketch → Vector Logo",
+    image: "/pencil-sketch-to-digital-design-before-after.webp",
+    alt: "Before and after showing a hand-drawn pencil sketch recreated as professional digital artwork",
+    before: "Rough pencil logo concept on paper with uneven linework",
+    after: "Clean scalable vector logo in Illustrator with mathematically precise curves",
+  },
+  {
+    title: "Website Paper Wireframe → Digital UI Layout",
+    image: "/wireframe-sketch-to-digital-design.webp",
+    alt: "Paper wireframe sketch digitized into clean interactive UI layout design",
+    before: "Hand-drawn website layout on notebook paper with rough component boxes",
+    after: "Structured digital wireframe in Figma ready for development and handoff",
+  },
+  {
+    title: "Product Sketch → Professional Digital Concept",
+    image: "/rough-product-sketch-digital-recreation.webp",
+    alt: "Rough product sketch on paper transformed into production-ready digital concept",
+    before: "Quick ergonomic product idea sketched with ballpoint pen",
+    after: "Polished digital product visualization with factory-ready dimensions",
+  },
+  {
+    title: "Hand-Drawn Illustration → Clean Digital Artwork",
+    image: "/sketch-to-illustrator-service.webp",
+    alt: "Hand-drawn illustration recreated as an editable vector design in Adobe Illustrator",
+    before: "Ink character illustration on sketchbook paper with textured lines",
+    after: "Refined digital illustration with clean vector strokes and layered colors",
+  },
+  {
+    title: "Packaging Sketch → Digital Packaging Layout",
+    image: "/hand-drawn-logo-to-vector.webp",
+    alt: "Hand-drawn logo and packaging concept on paper converted into scalable vector brand artwork",
+    before: "Rough box and brand concept drawn on paper with handwritten notes",
+    after: "Professional digital packaging artwork calibrated for commercial CMYK printing",
+  },
+];
+
+const deliverables = [
+  { title: "Professional Digital Artwork", desc: "Clean, organized digital recreation of the original concept." },
+  { title: "Vector Artwork", desc: "Scalable vector artwork when appropriate for the design." },
+  { title: "Editable Source Files", desc: "AI, PSD, or other editable formats when included in the project scope." },
+  { title: "High-Resolution Artwork", desc: "Suitable for digital use or print production." },
+  { title: "Print-Ready Files", desc: "Bleed, color, resolution, and other production requirements prepared when print production is required." },
+  { title: "Web-Ready Files", desc: "Optimized PNG, JPG, SVG, or other formats when needed." },
+];
+
+const useCases = [
+  { quote: "I drew a logo on paper.", answer: "We can recreate the concept digitally and prepare appropriate vector artwork." },
+  { quote: "I sketched a website layout.", answer: "We can turn the rough wireframe into a structured digital design." },
+  { quote: "I have a product idea.", answer: "We can digitally recreate the visual concept for presentations or further development." },
+  { quote: "I drew a packaging idea.", answer: "We can recreate the concept as digital packaging artwork." },
+  { quote: "I have an illustration on paper.", answer: "We can recreate the artwork digitally using an appropriate workflow." },
+  { quote: "I have an idea but I'm not a designer.", answer: "Send us the sketch and explain what you're trying to create. You don't need design skills." },
+];
+
+const relatedServices = [
+  { title: "AI Artwork Recreation", href: "/services/ai-artwork-recreation" },
+  { title: "AI Image to Vector", href: "/services/ai-image-to-vector" },
+  { title: "Logo Vectorization", href: "/services/logo-vectorization" },
+  { title: "T-Shirt Artwork", href: "/services/t-shirt-artwork" },
+  { title: "Poster Preparation", href: "/services/poster-preparation" },
+  { title: "Packaging Artwork", href: "/services/packaging-artwork" },
+  { title: "Book Cover Preparation", href: "/services/book-cover-preparation" },
+  { title: "Business Card Files", href: "/services/business-card-files" },
+  { title: "Sticker Artwork", href: "/services/sticker-artwork" },
+  { title: "Banner Artwork", href: "/services/banner-artwork" },
+  { title: "Product Label Design", href: "/services/label-design" },
+  { title: "CMYK Conversion", href: "/services/cmyk-conversion" },
+  { title: "Print File Inspection", href: "/services/print-file-inspection" },
+];
+
+const acceptableInputs = [
+  "Pencil drawing", "Pen sketch", "Notebook photo", "Phone photograph",
+  "Scanned paper", "Whiteboard sketch", "Screenshot", "Rough wireframe",
+  "Existing artwork", "Hand-drawn logo", "Product concept", "Packaging concept",
+];
+
+const targetAudience = [
+  "Inventors", "Entrepreneurs", "Startup founders", "Product creators",
+  "Artists", "Illustrators", "Small businesses", "Brand owners",
+  "Website owners", "App creators", "Marketing teams", "Packaging designers",
+  "Authors", "Students", "People with ideas who don't know how to use Illustrator or Photoshop",
+];
+
+const softwareTools = [
+  { name: "Adobe Illustrator", desc: "For vector artwork, logos, shapes, typography, diagrams, and scalable graphics." },
+  { name: "Adobe Photoshop", desc: "For raster artwork, image compositions, retouching, textures, and complex visual designs." },
+  { name: "Adobe InDesign", desc: "For appropriate print layouts and publishing projects." },
+  { name: "Figma", desc: "For UI concepts, website layouts, and interface-related projects." },
+];
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical="https://aiprintstudio.com/services/sketch-to-digital-design/"
+  schema={serviceSchema}
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(webPageSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+
+  <AnnouncementBar />
+  <Navbar activePath="/services" />
+
+  <main class="subpage-main sketch-service-page">
+    {/* ===== HERO SECTION ===== */}
+    <div class="subpage-hero sketch-hero">
+      <div class="container">
+        <Breadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Services", href: "/services" },
+            { label: "Sketch to Digital Design" },
+          ]}
+        />
+        <div class="sketch-hero__content">
+          <span class="section-badge">SKETCH → DIGITAL DESIGN</span>
+          <h1 class="subpage-hero__title">Turn Your Sketch Into Professional Digital Artwork</h1>
+          <p class="subpage-hero__subtitle">
+            Have an idea drawn on paper? Send us your pencil sketch, hand-drawn concept, wireframe, or rough drawing. We recreate your idea as clean, professional digital artwork using Illustrator, Photoshop, or the right design software for your project.
+          </p>
+
+          <div class="service-detail-meta-pills">
+            <span class="meta-pill">✓ Manual Digital Recreation</span>
+            <span class="meta-pill">✓ Professional Design Software</span>
+            <span class="meta-pill">✓ Vector & High-Resolution Output</span>
+            <span class="meta-pill">✓ Print-Ready Options</span>
+            <span class="meta-pill">✓ Human Designer</span>
+          </div>
+
+          <div class="service-detail-actions">
+            <a href="#quote" class="btn btn--primary btn--large" aria-label="Get a free quote for sketch to digital design">
+              Get a Free Quote
+            </a>
+            <a
+              href={whatsappUrl}
+              class="btn btn--outline btn--large"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Send your sketch via WhatsApp"
+            >
+              Send Your Sketch →
+            </a>
+          </div>
+        </div>
+
+        {/* Hero Visual — Before/After Concept */}
+        <div class="sketch-hero__visual">
+          <div class="sketch-ba">
+            <div class="sketch-ba__card sketch-ba__card--before">
+              <div class="sketch-ba__label sketch-ba__label--before">YOUR ORIGINAL SKETCH</div>
+              <div class="sketch-ba__placeholder sketch-ba__placeholder--before">
+                <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <rect width="200" height="160" fill="#fafafa" />
+                  <line x1="20" y1="30" x2="180" y2="30" stroke="#d4d4d4" stroke-width="0.5" stroke-dasharray="4 4" />
+                  <line x1="20" y1="60" x2="180" y2="60" stroke="#d4d4d4" stroke-width="0.5" stroke-dasharray="4 4" />
+                  <line x1="20" y1="90" x2="180" y2="90" stroke="#d4d4d4" stroke-width="0.5" stroke-dasharray="4 4" />
+                  <line x1="20" y1="120" x2="180" y2="120" stroke="#d4d4d4" stroke-width="0.5" stroke-dasharray="4 4" />
+                  {/* Rough hand-drawn sketch lines */}
+                  <path d="M60 110 Q65 50, 100 45 Q135 40, 140 100" stroke="#444" stroke-width="2" fill="none" stroke-linecap="round" style="filter: url(#rough)" />
+                  <path d="M70 100 Q75 65, 100 60 Q125 55, 130 95" stroke="#666" stroke-width="1.5" fill="none" stroke-linecap="round" />
+                  <path d="M85 90 L85 70 L115 70 L115 90" stroke="#555" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                  <circle cx="100" cy="52" r="12" stroke="#444" stroke-width="1.5" fill="none" />
+                  <text x="70" y="140" font-family="'Comic Sans MS', cursive" font-size="11" fill="#888">my logo idea</text>
+                </svg>
+              </div>
+            </div>
+
+            <div class="sketch-ba__arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+
+            <div class="sketch-ba__card sketch-ba__card--after">
+              <div class="sketch-ba__label sketch-ba__label--after">DIGITAL RECREATION</div>
+              <div class="sketch-ba__placeholder sketch-ba__placeholder--after">
+                <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <rect width="200" height="160" fill="#f0fdf4" />
+                  {/* Clean digital version */}
+                  <path d="M60 110 Q65 48, 100 43 Q135 38, 140 100" stroke="#15803d" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M70 100 Q75 63, 100 58 Q125 53, 130 95" stroke="#22c55e" stroke-width="2" fill="none" stroke-linecap="round" />
+                  <rect x="82" y="68" width="36" height="24" rx="2" stroke="#15803d" stroke-width="2" fill="none" />
+                  <circle cx="100" cy="50" r="13" stroke="#15803d" stroke-width="2.5" fill="none" />
+                  {/* Anchor points */}
+                  <circle cx="60" cy="110" r="3" fill="#15803d" />
+                  <circle cx="100" cy="43" r="3" fill="#15803d" />
+                  <circle cx="140" cy="100" r="3" fill="#15803d" />
+                  <text x="55" y="145" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#15803d">Professional Logo</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* ===== INTRODUCTION ===== */}
+    <section class="sketch-section">
+      <div class="container">
+        <div class="sketch-intro">
+          <h2 class="sketch-section__title">Your Idea Doesn't Have to Start as a Perfect Design</h2>
+          <div class="sketch-intro__content">
+            <p>Many great design ideas begin as a rough sketch on a piece of paper. You may know exactly what you want, but your idea may only exist as a pencil drawing, notebook sketch, wireframe, or rough concept.</p>
+            <p>AIPrintStudio can take that starting point and recreate it digitally. The goal is not simply to trace the image. The goal is to understand the visual concept, recreate the important elements, clean up the artwork, organize the design, and produce a professional digital version suitable for its intended use.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ===== SERVICE CARDS ===== */}
+    <section class="sketch-section sketch-section--alt">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge">What We Can Create</span>
+          <h2 class="section-title">What We Can Turn Into Digital Artwork</h2>
+          <p class="section-subtitle">From rough pencil sketches to polished professional designs — here's what we can recreate digitally.</p>
+        </div>
+        <div class="sketch-services-grid">
+          {serviceCards.map((card) => (
+            <div class="sketch-service-card">
+              <span class="sketch-service-card__icon">{card.icon}</span>
+              <h3 class="sketch-service-card__title">{card.title}</h3>
+              <p class="sketch-service-card__desc">{card.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ===== BEFORE & AFTER ===== */}
+    <section class="sketch-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge">Transformation Examples</span>
+          <h2 class="section-title">From Rough Sketch to Professional Digital Artwork</h2>
+          <p class="section-subtitle">You provide the concept. We handle the digital recreation.</p>
+        </div>
+        <div class="sketch-examples-grid">
+          {beforeAfterExamples.map((example) => (
+            <div class="sketch-example-card">
+              <h3 class="sketch-example-card__title">{example.title}</h3>
+              <div class="sketch-example-card__image-wrap">
+                <picture>
+                  <source srcset={example.image} type="image/webp" />
+                  <img
+                    src={example.image}
+                    alt={example.alt}
+                    width="800"
+                    height="450"
+                    loading="lazy"
+                    decoding="async"
+                    class="sketch-example-card__img"
+                  />
+                </picture>
+              </div>
+              <div class="sketch-example-card__row">
+                <div class="sketch-example-card__side sketch-example-card__side--before">
+                  <span class="sketch-example-card__tag sketch-example-card__tag--before">YOUR ORIGINAL SKETCH</span>
+                  <p>{example.before}</p>
+                </div>
+                <div class="sketch-example-card__arrow">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
+                <div class="sketch-example-card__side sketch-example-card__side--after">
+                  <span class="sketch-example-card__tag sketch-example-card__tag--after">DIGITAL RECREATION</span>
+                  <p>{example.after}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ===== MORE THAN TRACING ===== */}
+    <section class="sketch-section sketch-section--alt">
+      <div class="container">
+        <div class="sketch-differentiator">
+          <h2 class="sketch-section__title">More Than Simple Image Tracing</h2>
+          <div class="sketch-differentiator__content">
+            <p>A rough sketch is often only the starting point. Depending on the project, we can clean up uneven lines, recreate typography, rebuild shapes, organize layers, reconstruct vector paths, refine proportions, prepare colors, and create artwork suitable for digital or physical production.</p>
+            <p>This makes the service different from simply scanning or automatically tracing a piece of paper. We manually recreate the design based on your concept, producing professional artwork that can be edited, scaled, and used for its intended purpose.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ===== HOW IT WORKS ===== */}
+    <section class="sketch-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge">Simple Process</span>
+          <h2 class="section-title">How It Works</h2>
+          <p class="section-subtitle">Four simple steps from rough sketch to professional digital artwork.</p>
+        </div>
+        <div class="sketch-steps-grid">
+          {processSteps.map((step) => (
+            <div class="sketch-step-card">
+              <div class="sketch-step-card__num">{step.num}</div>
+              <h3 class="sketch-step-card__title">{step.title}</h3>
+              <p class="sketch-step-card__desc">{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ===== WHAT CAN YOU SEND? ===== */}
+    <section class="sketch-section sketch-section--alt">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge">No Perfection Required</span>
+          <h2 class="section-title">Your Sketch Doesn't Need to Be Perfect</h2>
+          <p class="section-subtitle">Even if the drawing is rough, send it to us. We'll review it and tell you what is possible.</p>
+        </div>
+        <div class="sketch-inputs-grid">
+          {acceptableInputs.map((input) => (
+            <div class="sketch-input-pill">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>{input}</span>
+            </div>
+          ))}
+        </div>
+        <div class="text-center mt-8">
+          <a
+            href={whatsappUrl}
+            class="btn btn--primary btn--large"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Send your sketch via WhatsApp"
+          >
+            Send My Sketch →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {/* ===== WHAT YOU RECEIVE ===== */}
+    <section class="sketch-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge">Deliverables</span>
+          <h2 class="section-title">What You Can Receive</h2>
+          <p class="section-subtitle">Depending on the project, final artwork may include the following.</p>
+        </div>
+        <div class="sketch-deliverables-grid">
+          {deliverables.map((item) => (
+            <div class="sketch-deliverable-card">
+              <h3 class="sketch-deliverable-card__title">{item.title}</h3>
+              <p class="sketch-deliverable-card__desc">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ===== WHO IS THIS FOR? ===== */}
+    <section class="sketch-section sketch-section--alt">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge">Who Uses This</span>
+          <h2 class="section-title">Who Uses Sketch-to-Digital Design Services?</h2>
+        </div>
+        <div class="sketch-audience-grid">
+          {targetAudience.map((person) => (
+            <span class="sketch-audience-pill">{person}</span>
+          ))}
+        </div>
+        <p class="sketch-audience-note">You don't need to know Photoshop or Illustrator. You only need to communicate the idea.</p>
+      </div>
+    </section>
+
+    {/* ===== USE CASES ===== */}
+    <section class="sketch-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge">Real-World Scenarios</span>
+          <h2 class="section-title">Common Starting Points</h2>
+        </div>
+        <div class="sketch-usecases-grid">
+          {useCases.map((uc) => (
+            <div class="sketch-usecase-card">
+              <h3 class="sketch-usecase-card__quote">"{uc.quote}"</h3>
+              <p class="sketch-usecase-card__answer">{uc.answer}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ===== CONCEPT TO PRODUCTION FLOW ===== */}
+    <section class="sketch-section sketch-section--alt">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge">Full Workflow</span>
+          <h2 class="section-title">From Concept to Production-Ready Artwork</h2>
+          <p class="section-subtitle">Concepts can originate in different ways — AI-generated image, human sketch, reference image, rough concept, or existing artwork. AIPrintStudio transforms these starting points into professionally prepared digital artwork.</p>
+        </div>
+        <div class="sketch-flow">
+          <div class="sketch-flow__step">
+            <span class="sketch-flow__icon">💡</span>
+            <span class="sketch-flow__label">Idea</span>
+          </div>
+          <span class="sketch-flow__connector">→</span>
+          <div class="sketch-flow__step">
+            <span class="sketch-flow__icon">✏️</span>
+            <span class="sketch-flow__label">Sketch</span>
+          </div>
+          <span class="sketch-flow__connector">→</span>
+          <div class="sketch-flow__step">
+            <span class="sketch-flow__icon">🖥️</span>
+            <span class="sketch-flow__label">Digital Recreation</span>
+          </div>
+          <span class="sketch-flow__connector">→</span>
+          <div class="sketch-flow__step">
+            <span class="sketch-flow__icon">📐</span>
+            <span class="sketch-flow__label">Vector / High-Res</span>
+          </div>
+          <span class="sketch-flow__connector">→</span>
+          <div class="sketch-flow__step">
+            <span class="sketch-flow__icon">🖨️</span>
+            <span class="sketch-flow__label">Print-Ready</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ===== SOFTWARE SECTION ===== */}
+    <section class="sketch-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge">Professional Tools</span>
+          <h2 class="section-title">Professional Tools for the Right Type of Artwork</h2>
+          <p class="section-subtitle">The appropriate software depends on the project. We use the right tool for each type of artwork.</p>
+        </div>
+        <div class="sketch-tools-grid">
+          {softwareTools.map((tool) => (
+            <div class="sketch-tool-card">
+              <h3 class="sketch-tool-card__name">{tool.name}</h3>
+              <p class="sketch-tool-card__desc">{tool.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ===== WHAT IS SKETCH-TO-DIGITAL DESIGN? (SEO) ===== */}
+    <section class="sketch-section sketch-section--alt">
+      <div class="container">
+        <div class="sketch-seo-content">
+          <h2 class="sketch-section__title">What Is Sketch-to-Digital Design?</h2>
+          <div class="sketch-seo-content__body">
+            <p><strong>Sketch-to-digital design</strong> is the process of recreating a hand-drawn sketch, pencil drawing, wireframe, or rough visual concept as professional digital artwork using design software such as Adobe Illustrator, Photoshop, InDesign, or Figma.</p>
+            <p>There is an important difference between <strong>scanning a drawing</strong> and <strong>digitally recreating a drawing</strong>.</p>
+            <p>A scan simply captures the paper — it produces a photograph of your sketch with all of its imperfections, background texture, and fixed resolution. The result is still a flat image that cannot be easily edited, scaled, or prepared for production.</p>
+            <p>Digital recreation rebuilds the artwork so that elements can potentially be edited, cleaned, rearranged, resized, or prepared for their intended use. The concept is translated into professional digital form using the appropriate design software, producing artwork that is clean, organized, and suitable for its purpose.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ===== FAQ SECTION ===== */}
+    <section class="sketch-section" id="sketch-faq">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge">Common Questions</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+        </div>
+        <div class="sketch-faq-grid">
+          {faqs.map((faq) => (
+            <div class="faq-card">
+              <h4 class="faq-card__question">Q: {faq.q}</h4>
+              <p class="faq-card__answer">{faq.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ===== RELATED SERVICES ===== */}
+    <section class="sketch-section sketch-section--alt">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge">Related Services</span>
+          <h2 class="section-title">Explore Our Other Services</h2>
+        </div>
+        <div class="sketch-related-grid">
+          {relatedServices.map((svc) => (
+            <a href={svc.href} class="sketch-related-link">
+              {svc.title}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ===== SIDEBAR QUOTE SECTION ===== */}
+    <section class="sketch-section" id="quote">
+      <div class="container">
+        <div class="sketch-quote-layout">
+          <div class="sketch-quote-content">
+            <h2 class="sketch-section__title">Have an Idea on Paper?</h2>
+            <p class="sketch-quote-desc">Don't worry if your sketch isn't perfect. Send us what you've drawn and tell us what you're trying to create. We'll review your concept and explain how we can turn it into professional digital artwork.</p>
+            <div class="service-detail-actions">
+              <a href="#quote-form-wrapper" class="btn btn--primary btn--large" aria-label="Get a free quote for sketch to digital design">
+                Get a Free Quote
+              </a>
+              <a
+                href={whatsappUrl}
+                class="btn btn--outline btn--large"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Send your sketch via WhatsApp"
+              >
+                Send Your Sketch →
+              </a>
+            </div>
+          </div>
+          <aside class="service-sidebar">
+            <QuoteForm defaultService="Sketch to Digital Design" />
+
+            <div class="sidebar-contact-card">
+              <h4>Need Immediate Help?</h4>
+              <p>Send your sketch directly on WhatsApp for instant feedback on your concept.</p>
+              <a
+                href={whatsappUrl}
+                class="btn btn--primary btn--full"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp +92 347 9429415
+              </a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+  <WhatsAppFloat />
+</Layout>

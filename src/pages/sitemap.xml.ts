@@ -21,6 +21,7 @@ export const GET: APIRoute = async () => {
     { url: `${siteUrl}/blog/`,            lastmod: BLOG_DATE },
     { url: `${siteUrl}/about/`,           lastmod: LAUNCH_DATE },
     { url: `${siteUrl}/contact/`,         lastmod: LAUNCH_DATE },
+    { url: `${siteUrl}/services/sketch-to-digital-design/`, lastmod: "2026-10-02" },
   ];
 
   const servicePages = Object.keys(servicesData).map((slug) => ({

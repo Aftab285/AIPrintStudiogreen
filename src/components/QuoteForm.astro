@@ -49,6 +49,7 @@ const { defaultService = "AI Artwork Recreation" } = Astro.props;
       <div class="form-group">
         <label for="quote-service">Service Needed</label>
         <select id="quote-service" name="service">
+          <option value="Sketch to Digital Design" selected={defaultService.includes("Sketch")}>Sketch to Digital Design</option>
           <option value="AI Artwork Recreation" selected={defaultService === "AI Artwork Recreation"}>AI Artwork Recreation</option>
           <option value="AI Image to Vector" selected={defaultService === "AI Image to Vector"}>AI Image to Vector</option>
           <option value="Logo Vectorization" selected={defaultService === "Logo Vectorization"}>Logo Vectorization</option>
