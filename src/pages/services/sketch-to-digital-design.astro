@@ -114,39 +114,46 @@ const processSteps = [
 
 const beforeAfterExamples = [
   {
-    title: "Pencil Logo Sketch → Vector Logo",
+    title: "Pencil Logo Sketch → Scalable Vector Logo",
     image: "/pencil-sketch-to-digital-design-before-after.webp",
-    alt: "Before and after showing a hand-drawn pencil sketch recreated as professional digital artwork",
-    before: "Rough pencil logo concept on paper with uneven linework",
-    after: "Clean scalable vector logo in Illustrator with mathematically precise curves",
+    alt: "Before and after comparison of hand-drawn pencil logo sketch recreated into crisp vector artwork",
+    before: "Rough pencil monogram sketch on paper with compass arcs and alignment guidelines",
+    after: "Clean scalable vector logo in Adobe Illustrator with smooth Bézier curves and sharp points",
   },
   {
     title: "Website Paper Wireframe → Digital UI Layout",
     image: "/wireframe-sketch-to-digital-design.webp",
-    alt: "Paper wireframe sketch digitized into clean interactive UI layout design",
-    before: "Hand-drawn website layout on notebook paper with rough component boxes",
-    after: "Structured digital wireframe in Figma ready for development and handoff",
-  },
-  {
-    title: "Product Sketch → Professional Digital Concept",
-    image: "/rough-product-sketch-digital-recreation.webp",
-    alt: "Rough product sketch on paper transformed into production-ready digital concept",
-    before: "Quick ergonomic product idea sketched with ballpoint pen",
-    after: "Polished digital product visualization with factory-ready dimensions",
+    alt: "Paper wireframe sketch digitized into high-fidelity responsive UI layout design",
+    before: "Hand-drawn website wireframe on notebook paper with section blocks and rough icon doodles",
+    after: "Structured high-fidelity digital UI layout in Figma with typography, hero imagery, and UI cards",
   },
   {
     title: "Hand-Drawn Illustration → Clean Digital Artwork",
     image: "/sketch-to-illustrator-service.webp",
-    alt: "Hand-drawn illustration recreated as an editable vector design in Adobe Illustrator",
-    before: "Ink character illustration on sketchbook paper with textured lines",
-    after: "Refined digital illustration with clean vector strokes and layered colors",
+    alt: "Pencil landscape drawing transformed into full-color digital artwork",
+    before: "Pencil landscape sketch on paper with graphite shading across mountain ridges and pine trees",
+    after: "Rich digital landscape artwork with vibrant atmospheric lighting, vector depth, and crisp color layers",
   },
   {
-    title: "Packaging Sketch → Digital Packaging Layout",
+    title: "Product Sketch → Professional Digital Concept",
+    image: "/rough-product-sketch-digital-recreation.webp",
+    alt: "Ergonomic armchair sketch with dimensions recreated into 3D digital concept",
+    before: "Hand-drawn armchair design with multi-angle perspective views and technical dimensions (85cm × 70cm × 75cm)",
+    after: "Photorealistic digital 3D product visualization showcasing solid wood frame, upholstery texture, and cushion depth",
+  },
+  {
+    title: "Industrial & Mobility Concept → 3D Digital Visualization",
+    image: "/sketch-industrial-concept-before-after.webp",
+    alt: "Technical mobility wheelchair sketch with mechanical notes converted into 3D digital model",
+    before: "Annotated mechanical wheelchair sketch detailing lightweight tubular chassis, 24-inch frame, and foldable footrest",
+    after: "Production-grade 3D digital model with realistic metallic tubular frame, ergonomic contours, and mechanical assemblies",
+  },
+  {
+    title: "Packaging Sketch → Scalable Vector Packaging Layout",
     image: "/hand-drawn-logo-to-vector.webp",
-    alt: "Hand-drawn logo and packaging concept on paper converted into scalable vector brand artwork",
-    before: "Rough box and brand concept drawn on paper with handwritten notes",
-    after: "Professional digital packaging artwork calibrated for commercial CMYK printing",
+    alt: "Circular brand emblem sketch on paper converted into scalable vector packaging and label artwork",
+    before: "Hand-drawn botanical emblem sketch with precision circle guides on textured paper",
+    after: "Production-ready vector brand emblem calibrated for commercial packaging print, box labels, and foil stamping",
   },
 ];
 
@@ -265,24 +272,23 @@ const softwareTools = [
           <div class="sketch-ba">
             <div class="sketch-ba__card sketch-ba__card--before">
               <div class="sketch-ba__label sketch-ba__label--before">YOUR ORIGINAL SKETCH</div>
-              <div class="sketch-ba__placeholder sketch-ba__placeholder--before">
-                <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <rect width="200" height="160" fill="#fafafa" />
-                  <line x1="20" y1="30" x2="180" y2="30" stroke="#d4d4d4" stroke-width="0.5" stroke-dasharray="4 4" />
-                  <line x1="20" y1="60" x2="180" y2="60" stroke="#d4d4d4" stroke-width="0.5" stroke-dasharray="4 4" />
-                  <line x1="20" y1="90" x2="180" y2="90" stroke="#d4d4d4" stroke-width="0.5" stroke-dasharray="4 4" />
-                  <line x1="20" y1="120" x2="180" y2="120" stroke="#d4d4d4" stroke-width="0.5" stroke-dasharray="4 4" />
-                  {/* Rough hand-drawn sketch lines */}
-                  <path d="M60 110 Q65 50, 100 45 Q135 40, 140 100" stroke="#444" stroke-width="2" fill="none" stroke-linecap="round" style="filter: url(#rough)" />
-                  <path d="M70 100 Q75 65, 100 60 Q125 55, 130 95" stroke="#666" stroke-width="1.5" fill="none" stroke-linecap="round" />
-                  <path d="M85 90 L85 70 L115 70 L115 90" stroke="#555" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-                  <circle cx="100" cy="52" r="12" stroke="#444" stroke-width="1.5" fill="none" />
-                  <text x="70" y="140" font-family="'Comic Sans MS', cursive" font-size="11" fill="#888">my logo idea</text>
-                </svg>
+              <div class="sketch-ba__image-box">
+                <picture>
+                  <source srcset="/hero-sketch-logo-before.webp" type="image/webp" />
+                  <img
+                    src="/hero-sketch-logo-before.webp"
+                    alt="Hand-drawn pencil logo sketch on textured paper with geometric alignment marks"
+                    width="600"
+                    height="600"
+                    loading="eager"
+                    fetchpriority="high"
+                    decoding="async"
+                  />
+                </picture>
               </div>
             </div>
 
-            <div class="sketch-ba__arrow">
+            <div class="sketch-ba__arrow" aria-label="digitally recreated into vector">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -291,20 +297,19 @@ const softwareTools = [
 
             <div class="sketch-ba__card sketch-ba__card--after">
               <div class="sketch-ba__label sketch-ba__label--after">DIGITAL RECREATION</div>
-              <div class="sketch-ba__placeholder sketch-ba__placeholder--after">
-                <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <rect width="200" height="160" fill="#f0fdf4" />
-                  {/* Clean digital version */}
-                  <path d="M60 110 Q65 48, 100 43 Q135 38, 140 100" stroke="#15803d" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-                  <path d="M70 100 Q75 63, 100 58 Q125 53, 130 95" stroke="#22c55e" stroke-width="2" fill="none" stroke-linecap="round" />
-                  <rect x="82" y="68" width="36" height="24" rx="2" stroke="#15803d" stroke-width="2" fill="none" />
-                  <circle cx="100" cy="50" r="13" stroke="#15803d" stroke-width="2.5" fill="none" />
-                  {/* Anchor points */}
-                  <circle cx="60" cy="110" r="3" fill="#15803d" />
-                  <circle cx="100" cy="43" r="3" fill="#15803d" />
-                  <circle cx="140" cy="100" r="3" fill="#15803d" />
-                  <text x="55" y="145" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#15803d">Professional Logo</text>
-                </svg>
+              <div class="sketch-ba__image-box">
+                <picture>
+                  <source srcset="/hero-sketch-logo-after.webp" type="image/webp" />
+                  <img
+                    src="/hero-sketch-logo-after.webp"
+                    alt="Professionally recreated vector logo emblem in Adobe Illustrator"
+                    width="600"
+                    height="600"
+                    loading="eager"
+                    fetchpriority="high"
+                    decoding="async"
+                  />
+                </picture>
               </div>
             </div>
           </div>
